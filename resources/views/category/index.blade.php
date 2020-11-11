@@ -22,48 +22,33 @@
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th scope="col">Tên danh mục</th>
+                                <th scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
+                            <div class="container">
+
+                            </div>
+                            @foreach($categories as $category)
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <th scope="row">{{$category->id}}</th>
+                                <td>{{$category->name}}</td>
+                                <td>
+                                    <a href="{{route('categories.edit', ['id' => $category->id])}}" class="btn btn-default">Edit</a>
+                                    <a href="{{route('categories.delete', ['id' => $category->id])}}" class="btn btn-danger">Delete</a>
+                                </td>
                             </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
+                <div class="col-md-12">{{$categories->links()}}</div>
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-        <div class="p-3">
-            <h5>Title</h5>
-            <p>Sidebar content</p>
-        </div>
-    </aside>
-    <!-- /.control-sidebar -->
 @endsection

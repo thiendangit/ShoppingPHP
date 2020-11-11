@@ -13,17 +13,16 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
-                        <form>
+                        <form action="{{route('categories.store')}}" method="post">
+                            @csrf
                             <div class="form-group">
                                 <label>Tên danh mục</label>
-                                <input type="email" class="form-control" placeholder="Nhập tên danh mục">
+                                <input type="text" class="form-control" name="name" placeholder="Nhập tên danh mục">
                             </div>
                             <div class="input-group mb-3">
-                                <select class="custom-select" id="inputGroupSelect02">
+                                <select class="custom-select" id="inputGroupSelect02" name="parent_id">
                                     <option selected>Chọn danh mục cha</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
+                                    {!! $htmlOption !!}
                                 </select>
                                 <div class="input-group-append">
                                     <label class="input-group-text" for="inputGroupSelect02">Options</label>
