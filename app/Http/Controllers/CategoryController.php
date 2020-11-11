@@ -17,10 +17,15 @@ class CategoryController extends Controller
     }
 
     public function create(){
+        $htmlOption = $this->getCategory('');
+        return view('category.add',compact('htmlOption'));
+    }
+
+    public function getCategory($parent_id){
         $data = $this->category->all();
         $recursive = new Recursive($data);
-        $htmlOption = $recursive->categoryRecursive();
-        return view('category.add',compact('htmlOption'));
+        $htmlOption = $recursive->categoryRecursive($parent_id);
+        return $htmlOption;
     }
 
     public function index(){
@@ -42,7 +47,7 @@ class CategoryController extends Controller
         $categories = $this->category->find($id);
         $htmlOption  = $this->getCategory($categories->parent_id);
 
-        return view('categories.edit',compact('categories','htmlOption'));
+        return view('category.edit',compact('categories','htmlOption'));
     }
 
 
