@@ -30,21 +30,21 @@
                             <div class="container">
 
                             </div>
-{{--                            @foreach($categories as $category)--}}
-{{--                                <tr>--}}
-{{--                                    <th scope="row">{{$category->id}}</th>--}}
-{{--                                    <td>{{$category->name}}</td>--}}
-{{--                                    <td>--}}
-{{--                                        <a href="{{route('categories.edit', ['id' => $category->id])}}" class="btn btn-default">Edit</a>--}}
-{{--                                        <a href="{{route('categories.delete', ['id' => $category->id])}}" class="btn btn-danger">Delete</a>--}}
-{{--                                    </td>--}}
-{{--                                </tr>--}}
-{{--                            @endforeach--}}
+                            @foreach($menus as $menu)
+                                <tr>
+                                    <th scope="row">{{$menu->id}}</th>
+                                    <td>{{$menu->name}}</td>
+                                    <td>
+                                        <a href="{{route('menus.edit', ['id' => $menu->id])}}" class="btn btn-default">Edit</a>
+                                        <a href="{{route('menus.delete', ['id' => $menu->id])}}" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
-{{--                <div class="col-md-12">{{$categories->links()}}</div>--}}
+                <div class="col-md-12">{{$menus->links()}}</div>
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>

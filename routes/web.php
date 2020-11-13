@@ -13,59 +13,109 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'AdminController@loginAdmin');
+Route::post('/', 'AdminController@postLoginAdmin');
 
 
 Route::get('/home', function () {
     return view('home');
 });
 
-Route::prefix('categories')->group(function () {
-    Route::get('/', [
-        'as' => 'categories.index',
-        'uses' => 'CategoryController@index'
-    ]);
+Route::prefix('admin')->group(function () {
 
-    Route::get('/create', [
-        'as' => 'categories.create',
-        'uses' => 'CategoryController@create'
-    ]);
+    Route::prefix('categories')->group(function () {
+        Route::get('/', [
+            'as' => 'categories.index',
+            'uses' => 'CategoryController@index'
+        ]);
 
-    Route::post('/store',[
-        'as' => 'categories.store',
-        'uses' => 'CategoryController@store'
-    ]);
+        Route::get('/create', [
+            'as' => 'categories.create',
+            'uses' => 'CategoryController@create'
+        ]);
 
-    Route::get('/edit/{id}', [
-        'as' => 'categories.edit',
-        'uses' => 'CategoryController@edit'
-    ]);
+        Route::post('/store',[
+            'as' => 'categories.store',
+            'uses' => 'CategoryController@store'
+        ]);
 
-    Route::post('/update/{id}', [
-        'as' => 'categories.update',
-        'uses' => 'CategoryController@update'
-    ]);
+        Route::get('/edit/{id}', [
+            'as' => 'categories.edit',
+            'uses' => 'CategoryController@edit'
+        ]);
 
-    Route::get('/delete/{id}', [
-        'as' => 'categories.delete',
-        'uses' => 'CategoryController@delete'
-    ]);
+        Route::post('/update/{id}', [
+            'as' => 'categories.update',
+            'uses' => 'CategoryController@update'
+        ]);
+
+        Route::get('/delete/{id}', [
+            'as' => 'categories.delete',
+            'uses' => 'CategoryController@delete'
+        ]);
+    });
+
+    Route::prefix('menus')->group(function () {
+        Route::get('/', [
+            'as' => 'menus.index',
+            'uses' => 'MenuController@index'
+        ]);
+        Route::get('/create', [
+            'as' => 'menus.create',
+            'uses' => 'MenuController@create'
+        ]);
+        Route::post('/store',[
+            'as' => 'menus.store',
+            'uses' => 'MenuController@store'
+        ]);
+        Route::get('/edit/{id}', [
+            'as' => 'menus.edit',
+            'uses' => 'MenuController@edit'
+        ]);
+
+        Route::post('/update/{id}', [
+            'as' => 'menus.update',
+            'uses' => 'MenuController@update'
+        ]);
+
+        Route::get('/delete/{id}', [
+            'as' => 'menus.delete',
+            'uses' => 'MenuController@delete'
+        ]);
+    });
+
+    Route::prefix('product')->group(function () {
+        Route::get('/', [
+            'as' => 'product.index',
+            'uses' => 'ProductController@index'
+        ]);
+        Route::get('/create', [
+            'as' => 'product.create',
+            'uses' => 'ProductController@create'
+        ]);
+        Route::post('/store',[
+            'as' => 'product.store',
+            'uses' => 'ProductController@store'
+        ]);
+//        Route::get('/edit/{id}', [
+//            'as' => 'menus.edit',
+//            'uses' => 'MenuController@edit'
+//        ]);
+//
+//        Route::post('/update/{id}', [
+//            'as' => 'menus.update',
+//            'uses' => 'MenuController@update'
+//        ]);
+//
+//        Route::get('/delete/{id}', [
+//            'as' => 'menus.delete',
+//            'uses' => 'MenuController@delete'
+//        ]);
+    });
 });
 
-Route::prefix('menus')->group(function () {
-    Route::get('/', [
-        'as' => 'menus.index',
-        'uses' => 'MenuController@index'
-    ]);
-    Route::get('/create', [
-        'as' => 'menus.create',
-        'uses' => 'MenuController@create'
-    ]);
-    Route::post('/store',[
-        'as' => 'menus.store',
-        'uses' => 'MenuController@store'
-    ]);
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
+    Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
 });
 

@@ -18,6 +18,20 @@ class MenuRecursive {
         }
         return $this->htmlSelect;
     }
+
+    public function menuRecursiveForEdit($parentIdMenuEdit , $parentId = 0, $text = ''){
+        $data = Menu::where('parent_id', $parentId) -> get();
+        foreach ($data as $dataItem){
+            if($parentIdMenuEdit == $dataItem -> id){
+                $this->htmlSelect .= "<option selected value='" . $dataItem['id'] . "'>" . $text . $dataItem['name'] . "</option>";
+            }else{
+                $this->htmlSelect .= "<option value='" . $dataItem['id'] . "'>" . $text . $dataItem['name'] . "</option>";
+            }
+
+            $this->menuRecursiveForEdit($parentIdMenuEdit , $dataItem->id, $text . '-');
+        }
+        return $this->htmlSelect;
+    }
 }
 
 

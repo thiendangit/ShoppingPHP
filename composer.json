@@ -14,7 +14,8 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/helpers": "^1.4",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "unisharp/laravel-filemanager": "1.9.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
