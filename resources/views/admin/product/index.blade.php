@@ -7,7 +7,7 @@
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-    @include('partials.content-header',['name' => 'product','key' => 'list'])
+    @include('partials.content-header',['name' => 'product','key' => 'edit'])
     <!-- /.content-header -->
 
         <!-- Main content -->
@@ -45,8 +45,8 @@
                                     </td>
                                     <td>{{$product->category->name}}</td>
                                     <td>
-                                        <a href="" class="btn btn-default">Edit</a>
-                                        <a href="" class="btn btn-danger">Delete</a>
+                                        <a href="{{route('product.edit',['id'=>$product->id])}}" class="btn btn-default">Edit</a>
+                                        <a href="" class="btn btn-danger action_delete" data-url="{{route('product.delete',['id' => $product->id])}}" >Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -61,4 +61,9 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+@endsection
+
+@section('js')
+    <script src="{{ asset('vendors/sweetAlert2/sweetalert2@10.js')}}"></script>
+    <script src="{{ asset('admins/product/index/list.js') }}"></script>
 @endsection

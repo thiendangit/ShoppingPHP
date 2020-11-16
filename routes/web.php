@@ -97,20 +97,20 @@ Route::prefix('admin')->group(function () {
             'as' => 'product.store',
             'uses' => 'ProductController@store'
         ]);
-//        Route::get('/edit/{id}', [
-//            'as' => 'menus.edit',
-//            'uses' => 'MenuController@edit'
-//        ]);
-//
-//        Route::post('/update/{id}', [
-//            'as' => 'menus.update',
-//            'uses' => 'MenuController@update'
-//        ]);
-//
-//        Route::get('/delete/{id}', [
-//            'as' => 'menus.delete',
-//            'uses' => 'MenuController@delete'
-//        ]);
+        Route::get('/edit/{id}', [
+            'as' => 'product.edit',
+            'uses' => 'ProductController@edit'
+        ]);
+
+        Route::post('/update/{id}', [
+            'as' => 'product.update',
+            'uses' => 'ProductController@update'
+        ]);
+
+        Route::get('/delete/{id}', [
+            'as' => 'product.delete',
+            'uses' => 'ProductController@delete'
+        ]);
     });
 });
 
