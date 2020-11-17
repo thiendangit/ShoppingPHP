@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Components\Recursive;
+use App\Http\Requests\Products;
 use App\Models\Caterory;
 use App\Models\Product;
 use App\Models\ProductImage;
@@ -10,6 +11,7 @@ use App\Models\Tag;
 use App\Traits\StorageImageTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use mysql_xdevapi\Exception;
 
 class ProductController extends Controller
@@ -48,7 +50,7 @@ class ProductController extends Controller
         return $htmlOption;
     }
 
-    public function store(Request $request)
+    public function store(Products $request)
     {
         try {
             DB::beginTransaction();
