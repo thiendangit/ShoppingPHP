@@ -5,7 +5,7 @@
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-    @include('partials.content-header',['name' => 'menu','key' => 'add'])
+    @include('partials.content-header',['name' => 'slider','key' => 'add'])
     <!-- /.content-header -->
 
         <!-- Main content -->
@@ -13,20 +13,23 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
-                        <form action="{{route('menus.store')}}" method="post">
+                        <form action="{{route('slider.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label>Tên menu</label>
-                                <input type="text" class="form-control" name="name" placeholder="Nhập tên menu">
+                                <label>Tên slider</label>
+                                <input type="text" class="form-control" name="name" placeholder="Nhập tên slider">
                             </div>
-                            <div class="input-group mb-3">
-                                <select class="custom-select" id="inputGroupSelect02" name="parent_id">
-                                    <option selected>Chọn menu cha</option>
-                                    {!! $html !!}
-                                </select>
-                                <div class="input-group-append">
-                                    <label class="input-group-text" for="inputGroupSelect02">Options</label>
-                                </div>
+                            <div class="form-group">
+                                <label>Mô tả</label>
+                                <textarea
+                                    class="form-control"
+                                    name="description"
+                                    rows="3"
+                                    placeholder="Nhập tên mô tả"> {{old('description')}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Hình ảnh</label>
+                                <input type="file" class="form-control-file" name="image_path">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

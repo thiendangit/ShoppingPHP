@@ -112,6 +112,37 @@ Route::prefix('admin')->group(function () {
             'uses' => 'ProductController@delete'
         ]);
     });
+
+    Route::prefix('slider')->group(function () {
+        Route::get('/', [
+            'as' => 'slider.index',
+            'uses' => 'SliderController@index'
+        ]);
+        Route::get('/create', [
+            'as' => 'slider.create',
+            'uses' => 'SliderController@create'
+        ]);
+
+        Route::post('/store',[
+            'as' => 'slider.store',
+            'uses' => 'SliderController@store'
+        ]);
+
+        Route::get('/edit/{id}', [
+            'as' => 'slider.edit',
+            'uses' => 'SliderController@edit'
+        ]);
+
+        Route::post('/update/{id}', [
+            'as' => 'slider.update',
+            'uses' => 'SliderController@update'
+        ]);
+
+//        Route::get('/delete/{id}', [
+//            'as' => 'product.delete',
+//            'uses' => 'ProductController@delete'
+//        ]);
+    });
 });
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {

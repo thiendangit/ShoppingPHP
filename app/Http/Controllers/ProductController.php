@@ -90,7 +90,7 @@ class ProductController extends Controller
             return redirect()->route('product.index');
         } catch (Exception $e) {
             DB::rollback();
-            Log::error("Message : " . $e->getMessage() . 'Line:' . $e . getLine());
+            Log::error("Message : " . $e->getMessage() . 'Line:' . $e->getLine());
         }
     }
 

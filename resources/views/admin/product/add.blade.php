@@ -22,7 +22,7 @@
                             <div class="form-group">
                                 <label>Tên sản phẩm</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                                       placeholder="Nhập tên sản phẩm">
+                                       placeholder="Nhập tên sản phẩm" value="{{old('name')}}">
                                 @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <label>Giá sản phẩm </label>
                                 <input type="text" class="form-control @error('price') is-invalid @enderror"
-                                       name="price" placeholder="Nhập giá sản phẩm">
+                                       name="price" placeholder="Nhập giá sản phẩm" value="{{old('price')}}">
                                 @error('price')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -38,12 +38,12 @@
                             <div class="form-group">
                                 <label>Hình ảnh </label>
                                 <input type="file" class="form-control-file" name="feature_image_path"
-                                       placeholder="Chọn hình ảnh">
+                                       placeholder="Chọn hình ảnh" value="{{old('feature_image_path')}}">
                             </div>
                             <div class="form-group">
                                 <label>Hình ảnh chi tiết </label>
                                 <input type="file" class="form-control-file" name="image_path[]"
-                                       placeholder="Chọn hình ảnh chi tiết" multiple="multiple">
+                                       placeholder="Chọn hình ảnh chi tiết" multiple="multiple" value="{{old('image_path[]')}}">
                             </div>
                             <div class="form-group">
                                 <label>Nhập tags cho sản phẩm </label>
@@ -73,7 +73,7 @@
                                     <textarea
                                         class="form-control tinymce_editor_init @error('contents') is-invalid @enderror"
                                         name="contents"
-                                        rows="3"></textarea>
+                                        rows="3"> {{old('contents')}}</textarea>
                                 </div>
                             </div>
                             @error('contents')
