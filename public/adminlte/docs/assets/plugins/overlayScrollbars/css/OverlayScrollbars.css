@@ -378,7 +378,7 @@ CUSTOM SCROLLBARS AND CORNER CORE:
 }
 html.os-html > .os-host > .os-scrollbar {
     position: absolute; /* could be position: fixed; but it causes issues on iOS (-webkit-overflow-scrolling: touch) */
-    z-index: 999999; /* highest z-index of the page */
+    z-index: 999999; /* highest z-add of the page */
 }
 .os-scrollbar,
 .os-scrollbar-corner {

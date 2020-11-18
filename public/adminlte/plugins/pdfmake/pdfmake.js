@@ -1613,7 +1613,7 @@ Buffer.prototype.compare = function compare (target, start, end, thisStart, this
   }
 
   if (start < 0 || end > target.length || thisStart < 0 || thisEnd > this.length) {
-    throw new RangeError('out of range index')
+    throw new RangeError('out of range add')
   }
 
   if (thisStart >= thisEnd && start >= end) {
@@ -1653,13 +1653,13 @@ Buffer.prototype.compare = function compare (target, start, end, thisStart, this
   return 0
 }
 
-// Finds either the first index of `val` in `buffer` at offset >= `byteOffset`,
-// OR the last index of `val` in `buffer` at offset <= `byteOffset`.
+// Finds either the first add of `val` in `buffer` at offset >= `byteOffset`,
+// OR the last add of `val` in `buffer` at offset <= `byteOffset`.
 //
 // Arguments:
 // - buffer - a Buffer to search
 // - val - a string, Buffer, or number
-// - byteOffset - an index into `buffer`; will be clamped to an int32
+// - byteOffset - an add into `buffer`; will be clamped to an int32
 // - encoding - an optional encoding, relevant is val is a string
 // - dir - true for indexOf, false for lastIndexOf
 function bidirectionalIndexOf (buffer, val, byteOffset, encoding, dir) {
@@ -2615,7 +2615,7 @@ Buffer.prototype.fill = function fill (val, start, end, encoding) {
 
   // Invalid ranges are not set to a default, so can range check early.
   if (start < 0 || this.length < start || this.length < end) {
-    throw new RangeError('Out of range index')
+    throw new RangeError('Out of range add')
   }
 
   if (end <= start) {
@@ -5626,7 +5626,7 @@ var $at = __webpack_require__(343)(true);
 // 21.1.3.27 String.prototype[@@iterator]()
 __webpack_require__(116)(String, 'String', function (iterated) {
   this._t = String(iterated); // target
-  this._i = 0;                // next index
+  this._i = 0;                // next add
 // 21.1.5.2.1 %StringIteratorPrototype%.next()
 }, function () {
   var O = this._t;
@@ -5770,7 +5770,7 @@ var toIObject = __webpack_require__(43);
 // 22.1.3.30 Array.prototype[@@iterator]()
 module.exports = __webpack_require__(150)(Array, 'Array', function (iterated, kind) {
   this._t = toIObject(iterated); // target
-  this._i = 0;                   // next index
+  this._i = 0;                   // next add
   this._k = kind;                // kind
 // 22.1.5.2.1 %ArrayIteratorPrototype%.next()
 }, function () {
@@ -10199,7 +10199,7 @@ var bomHandling = __webpack_require__(304),
     iconv = module.exports;
 
 // All codecs and aliases are kept here, keyed by encoding name/alias.
-// They are lazy loaded in `iconv.getCodec` from `encodings/index.js`.
+// They are lazy loaded in `iconv.getCodec` from `encodings/add.js`.
 iconv.encodings = null;
 
 // Characters emitted in case of error.
@@ -16416,7 +16416,7 @@ module.exports = {
     var C = wrapper(function (that, iterable) {
       anInstance(that, C, NAME, '_i');
       that._t = NAME;         // collection type
-      that._i = create(null); // index
+      that._i = create(null); // add
       that._f = undefined;    // first entry
       that._l = undefined;    // last entry
       that[SIZE] = 0;         // size
@@ -16485,7 +16485,7 @@ module.exports = {
     // create new entry
     } else {
       that._l = entry = {
-        i: index = fastKey(key, true), // <- index
+        i: index = fastKey(key, true), // <- add
         k: key,                        // <- key
         v: value,                      // <- value
         p: prev = that._l,             // <- previous entry
@@ -16495,7 +16495,7 @@ module.exports = {
       if (!that._f) that._f = entry;
       if (prev) prev.n = entry;
       that[SIZE]++;
-      // add to index
+      // add to add
       if (index !== 'F') that._i[index] = entry;
     } return that;
   },
@@ -17925,7 +17925,7 @@ exports.BrotliBuildHuffmanTable = function(root_table, table, root_bits, code_le
   var start_table = table;
   var code;            /* current table entry */
   var len;             /* current code length */
-  var symbol;          /* symbol index in original or sorted table */
+  var symbol;          /* symbol add in original or sorted table */
   var key;             /* reversed prefix code */
   var step;            /* step size to replicate values in current table */
   var low;             /* low bits for current root entry */
@@ -20773,9 +20773,9 @@ function inRange(value, rangeGroup) {
   var endRange = rangeGroup.length / 2;
 
   while (startRange <= endRange) {
-    var middleRange = Math.floor((startRange + endRange) / 2); // actual array index
+    var middleRange = Math.floor((startRange + endRange) / 2); // actual array add
 
-    var arrayIndex = middleRange * 2; // Check if value is in range pointed by actual index
+    var arrayIndex = middleRange * 2; // Check if value is in range pointed by actual add
 
     if (value >= rangeGroup[arrayIndex] && value <= rangeGroup[arrayIndex + 1]) {
       return true;
@@ -26415,7 +26415,7 @@ var ARRAY_BUFFER = 'ArrayBuffer';
 var DATA_VIEW = 'DataView';
 var PROTOTYPE = 'prototype';
 var WRONG_LENGTH = 'Wrong length!';
-var WRONG_INDEX = 'Wrong index!';
+var WRONG_INDEX = 'Wrong add!';
 var $ArrayBuffer = global[ARRAY_BUFFER];
 var $DataView = global[DATA_VIEW];
 var Math = global.Math;
@@ -27060,7 +27060,7 @@ var $at = __webpack_require__(94)(true);
 // 21.1.3.27 String.prototype[@@iterator]()
 __webpack_require__(150)(String, 'String', function (iterated) {
   this._t = String(iterated); // target
-  this._i = 0;                // next index
+  this._i = 0;                // next add
 // 21.1.5.2.1 %StringIteratorPrototype%.next()
 }, function () {
   var O = this._t;
@@ -27592,7 +27592,7 @@ var GZIP_HEADER_ID1 = 0x1f;
 var GZIP_HEADER_ID2 = 0x8b;
 
 /**
- * Emulate Node's zlib C++ layer for use by the JS layer in index.js
+ * Emulate Node's zlib C++ layer for use by the JS layer in add.js
  */
 function Zlib(mode) {
   if (typeof mode !== 'number' || mode < exports.DEFLATE || mode > exports.UNZIP) {
@@ -28417,7 +28417,7 @@ function longest_match(s, cur_match) {
   var prev  = s.prev;
 
   /* Stop when cur_match becomes <= limit. To simplify the code,
-   * we prevent matches with the string of window index 0.
+   * we prevent matches with the string of window add 0.
    */
 
   var strend = s.strstart + MAX_MATCH;
@@ -28805,7 +28805,7 @@ function deflate_fast(s, flush) {
      */
     if (hash_head !== 0/*NIL*/ && ((s.strstart - hash_head) <= (s.w_size - MIN_LOOKAHEAD))) {
       /* To simplify the code, we prevent matches with the string
-       * of window index 0 (in particular we have to avoid a match
+       * of window add 0 (in particular we have to avoid a match
        * of the string with itself at the start of the input file).
        */
       s.match_length = longest_match(s, hash_head);
@@ -28938,7 +28938,7 @@ function deflate_slow(s, flush) {
     if (hash_head !== 0/*NIL*/ && s.prev_length < s.max_lazy_match &&
         s.strstart - hash_head <= (s.w_size - MIN_LOOKAHEAD)/*MAX_DIST(s)*/) {
       /* To simplify the code, we prevent matches with the string
-       * of window index 0 (in particular we have to avoid a match
+       * of window add 0 (in particular we have to avoid a match
        * of the string with itself at the start of the input file).
        */
       s.match_length = longest_match(s, hash_head);
@@ -29293,14 +29293,14 @@ function DeflateState() {
    */
 
   this.prev = null;
-  /* Link to older string with same hash index. To limit the size of this
+  /* Link to older string with same hash add. To limit the size of this
    * array to 64K, this link is maintained only for the last 32K strings.
-   * An index in this array is thus a window index modulo 32K.
+   * An add in this array is thus a window add modulo 32K.
    */
 
   this.head = null;   /* Heads of the hash chains or NIL. */
 
-  this.ins_h = 0;       /* hash index of string to be inserted */
+  this.ins_h = 0;       /* hash add of string to be inserted */
   this.hash_size = 0;   /* number of elements in hash table */
   this.hash_bits = 0;   /* log2(hash_size) */
   this.hash_mask = 0;   /* hash_size-1 */
@@ -29395,7 +29395,7 @@ function DeflateState() {
   /* Depth of each subtree used as tie breaker for trees of equal frequency
    */
 
-  this.l_buf = 0;          /* buffer index for literals or lengths */
+  this.l_buf = 0;          /* buffer add for literals or lengths */
 
   this.lit_bufsize = 0;
   /* Size of match buffer for literals/lengths.  There are 4 reasons for
@@ -29417,10 +29417,10 @@ function DeflateState() {
    *   - I can't count above 4
    */
 
-  this.last_lit = 0;      /* running index in l_buf */
+  this.last_lit = 0;      /* running add in l_buf */
 
   this.d_buf = 0;
-  /* Buffer index for distances. To simplify the code, d_buf and l_buf have
+  /* Buffer add for distances. To simplify the code, d_buf and l_buf have
    * the same number of elements. To use different lengths, an extra flag
    * array would be necessary.
    */
@@ -30223,7 +30223,7 @@ function StaticTreeDesc(static_tree, extra_bits, extra_base, elems, max_length) 
 
   this.static_tree  = static_tree;  /* static tree or NULL */
   this.extra_bits   = extra_bits;   /* extra bits for each code or NULL */
-  this.extra_base   = extra_base;   /* base index for extra_bits */
+  this.extra_base   = extra_base;   /* base add for extra_bits */
   this.elems        = elems;        /* max number of elements in the tree */
   this.max_length   = max_length;   /* max bit length for the codes */
 
@@ -30338,7 +30338,7 @@ function gen_bitlen(s, desc)
   var extra           = desc.stat_desc.extra_bits;
   var base            = desc.stat_desc.extra_base;
   var max_length      = desc.stat_desc.max_length;
-  var h;              /* heap index */
+  var h;              /* heap add */
   var n, m;           /* iterate over the tree elements */
   var bits;           /* bit length */
   var xbits;          /* extra bits */
@@ -30431,8 +30431,8 @@ function gen_codes(tree, max_code, bl_count)
 {
   var next_code = new Array(MAX_BITS + 1); /* next code value for each bit length */
   var code = 0;              /* running code value */
-  var bits;                  /* bit index */
-  var n;                     /* code index */
+  var bits;                  /* bit add */
+  var n;                     /* code add */
 
   /* The distribution counts are first used to generate the code values
    * without bit reversal.
@@ -30467,7 +30467,7 @@ function tr_static_init() {
   var bits;     /* bit counter */
   var length;   /* length value */
   var code;     /* code value */
-  var dist;     /* distance index */
+  var dist;     /* distance add */
   var bl_count = new Array(MAX_BITS + 1);
   /* number of codes at each bit length for an optimal tree */
 
@@ -30675,7 +30675,7 @@ function compress_block(s, ltree, dtree)
 {
   var dist;           /* distance of matched string */
   var lc;             /* match length or unmatched char (if dist == 0) */
-  var lx = 0;         /* running index in l_buf */
+  var lx = 0;         /* running add in l_buf */
   var code;           /* the code to send */
   var extra;          /* number of extra bits to send */
 
@@ -30958,11 +30958,11 @@ function send_tree(s, tree, max_code)
 
 
 /* ===========================================================================
- * Construct the Huffman tree for the bit lengths and return the index in
+ * Construct the Huffman tree for the bit lengths and return the add in
  * bl_order of the last bit length code to send.
  */
 function build_bl_tree(s) {
-  var max_blindex;  /* index of last bit length code of non zero freq */
+  var max_blindex;  /* add of last bit length code of non zero freq */
 
   /* Determine the bit length frequencies for literal and distance trees */
   scan_tree(s, s.dyn_ltree, s.l_desc.max_code);
@@ -31001,7 +31001,7 @@ function send_all_trees(s, lcodes, dcodes, blcodes)
 //    deflate_state *s;
 //    int lcodes, dcodes, blcodes; /* number of codes for each tree */
 {
-  var rank;                    /* index in bl_order */
+  var rank;                    /* add in bl_order */
 
   //Assert (lcodes >= 257 && dcodes >= 1 && blcodes >= 4, "not enough codes");
   //Assert (lcodes <= L_CODES && dcodes <= D_CODES && blcodes <= BL_CODES,
@@ -31131,7 +31131,7 @@ function _tr_flush_block(s, buf, stored_len, last)
 //int last;         /* one if this is the last block for a file */
 {
   var opt_lenb, static_lenb;  /* opt_len and static_len in bytes */
-  var max_blindex = 0;        /* index of last bit length code of non zero freq */
+  var max_blindex = 0;        /* add of last bit length code of non zero freq */
 
   /* Build the Huffman trees unless a stored block is forced */
   if (s.level > 0) {
@@ -31153,7 +31153,7 @@ function _tr_flush_block(s, buf, stored_len, last)
      * the compressed block data, excluding the tree representations.
      */
 
-    /* Build the bit length tree for the above two trees, and get the index
+    /* Build the bit length tree for the above two trees, and get the add
      * in bl_order of the last bit length code to send.
      */
     max_blindex = build_bl_tree(s);
@@ -31456,7 +31456,7 @@ function InflateState() {
   this.wbits = 0;             /* log base 2 of requested window size */
   this.wsize = 0;             /* window size or zero if not using window */
   this.whave = 0;             /* valid bytes in the window */
-  this.wnext = 0;             /* window write index */
+  this.wnext = 0;             /* window write add */
   this.window = null;         /* allocated sliding window, if needed */
 
   /* bit accumulator */
@@ -31473,8 +31473,8 @@ function InflateState() {
   /* fixed and dynamic code tables */
   this.lencode = null;          /* starting table for length/literal codes */
   this.distcode = null;         /* starting table for distance codes */
-  this.lenbits = 0;           /* index bits for lencode */
-  this.distbits = 0;          /* index bits for distcode */
+  this.lenbits = 0;           /* add bits for lencode */
+  this.distbits = 0;          /* add bits for distcode */
 
   /* dynamic table building */
   this.ncode = 0;             /* number of code length code lengths */
@@ -31597,7 +31597,7 @@ function inflateInit(strm) {
 
 
 /*
- Return state with length and distance decoding tables and index sizes set to
+ Return state with length and distance decoding tables and add sizes set to
  fixed code decoding.  Normally this returns fixed tables from inffixed.h.
  If BUILDFIXED is defined, then instead this routine builds the tables the
  first time it's called, and returns those tables the first time and
@@ -32955,7 +32955,7 @@ module.exports = function inflate_fast(strm, start) {
 //#endif
   var wsize;                  /* window size or zero if not using window */
   var whave;                  /* valid bytes in the window */
-  var wnext;                  /* window write index */
+  var wnext;                  /* window write add */
   // Use `s_window` instead `window`, avoid conflict with instrumentation tools
   var s_window;               /* allocated sliding window, if wsize != 0 */
   var hold;                   /* local strm.hold */
@@ -33108,7 +33108,7 @@ module.exports = function inflate_fast(strm, start) {
 //                }
 //#endif
               }
-              from = 0; // window index
+              from = 0; // window add
               from_source = s_window;
               if (wnext === 0) {           /* very common case */
                 from += wsize - op;
@@ -33295,16 +33295,16 @@ module.exports = function inflate_table(type, lens, lens_index, codes, table, ta
       //here = opts.here; /* table entry for duplication */
 
   var len = 0;               /* a code's length in bits */
-  var sym = 0;               /* index of code symbols */
+  var sym = 0;               /* add of code symbols */
   var min = 0, max = 0;          /* minimum and maximum code lengths */
-  var root = 0;              /* number of index bits for root table */
-  var curr = 0;              /* number of index bits for current table */
+  var root = 0;              /* number of add bits for root table */
+  var curr = 0;              /* number of add bits for current table */
   var drop = 0;              /* code bits to drop for sub-table */
   var left = 0;                   /* number of prefix codes available */
   var used = 0;              /* code entries in table used */
   var huff = 0;              /* Huffman code */
-  var incr;              /* for incrementing code, index */
-  var fill;              /* index for replicating entries */
+  var incr;              /* for incrementing code, add */
+  var fill;              /* add for replicating entries */
   var low;               /* low bits for current root entry */
   var mask;              /* mask for low root bits */
   var next;             /* next available space in table */
@@ -33416,14 +33416,14 @@ module.exports = function inflate_table(type, lens, lens_index, codes, table, ta
 
   /*
    Create and fill in decoding tables.  In this loop, the table being
-   filled is at next and has curr index bits.  The code being used is huff
-   with length len.  That code is converted to an index by dropping drop
+   filled is at next and has curr add bits.  The code being used is huff
+   with length len.  That code is converted to an add by dropping drop
    bits off of the bottom.  For codes where len is less than drop + curr,
    those top drop + curr - len bits are incremented through all values to
    fill the table with replicated entries.
 
-   root is the number of index bits for the root table.  When len exceeds
-   root, sub-tables are created pointed to by the root entry with an index
+   root is the number of add bits for the root table.  When len exceeds
+   root, sub-tables are created pointed to by the root entry with an add
    of the low root bits of huff.  This is saved in low to check for when a
    new sub-table should be started.  drop is zero when the root table is
    being filled, and drop is root when sub-tables are being filled.
@@ -33470,8 +33470,8 @@ module.exports = function inflate_table(type, lens, lens_index, codes, table, ta
   sym = 0;                    /* starting code symbol */
   len = min;                  /* starting code length */
   next = table_index;              /* current table to fill in */
-  curr = root;                /* current table index bits */
-  drop = 0;                   /* current bits to drop from code for index */
+  curr = root;                /* current table add bits */
+  drop = 0;                   /* current bits to drop from code for add */
   low = -1;                   /* trigger new sub-table when len > root */
   used = 1 << root;          /* use root table entries */
   mask = used - 1;            /* mask for comparing low */
@@ -34091,7 +34091,7 @@ module.exports = {
 	            y = newY;
 	        }
 
-	        // Compute pi index constants
+	        // Compute pi add constants
 	        for (var x = 0; x < 5; x++) {
 	            for (var y = 0; y < 5; y++) {
 	                PI_INDEXES[x + 5 * y] = y + ((2 * x + 3 * y) % 5) * 5;
@@ -37531,8 +37531,8 @@ var OS2 = new r.VersionedStruct(r.uint16, {
     vendorID: new r.String(4), // four character identifier for the font vendor
     fsSelection: new r.Bitfield(r.uint16, [// bit field containing information about the font
     'italic', 'underscore', 'negative', 'outlined', 'strikeout', 'bold', 'regular', 'useTypoMetrics', 'wws', 'oblique']),
-    usFirstCharIndex: r.uint16, // The minimum Unicode index in this font
-    usLastCharIndex: r.uint16 // The maximum Unicode index in this font
+    usFirstCharIndex: r.uint16, // The minimum Unicode add in this font
+    usLastCharIndex: r.uint16 // The maximum Unicode add in this font
   },
 
   // The Apple version of this table ends here, but the Microsoft one continues on...
@@ -38636,7 +38636,7 @@ var FeatureVariations = new r.Struct({
   featureVariationRecords: new r.Array(FeatureVariationRecord, 'featureVariationRecordCount')
 });
 
-// Checks if an operand is an index of a predefined value,
+// Checks if an operand is an add of a predefined value,
 // otherwise delegates to the provided type.
 
 var PredefinedOp = function () {
@@ -39228,7 +39228,7 @@ var LayerRecord = new r.Struct({
   paletteIndex: r.uint16 // Index value to use in the appropriate palette. This value must
 }); // be less than numPaletteEntries in the CPAL table, except for
 // the special case noted below. Each palette entry is 16 bits.
-// A palette index of 0xFFFF is a special case indicating that
+// A palette add of 0xFFFF is a special case indicating that
 // the text foreground color should be used.
 
 var BaseGlyphRecord = new r.Struct({
@@ -39288,7 +39288,7 @@ var BaseCoord = new r.VersionedStruct(r.uint16, {
 });
 
 var BaseValues = new r.Struct({
-  defaultIndex: r.uint16, // Index of default baseline for this script-same index in the BaseTagList
+  defaultIndex: r.uint16, // Index of default baseline for this script-same add in the BaseTagList
   baseCoordCount: r.uint16,
   baseCoords: new r.Array(new r.Pointer(r.uint16, BaseCoord), 'baseCoordCount')
 });
@@ -40221,7 +40221,7 @@ function StateTable1() {
 
   var entry = _Object$assign({
     newStateOffset: r.uint16,
-    // convert offset to stateArray index
+    // convert offset to stateArray add
     newState: function newState(t) {
       return (t.newStateOffset - (t.parent.stateArray.base - t.parent._startOffset)) / t.parent.nClasses;
     },
@@ -44341,7 +44341,7 @@ var OTProcessor = function () {
 
       var lookupRecord = _ref11;
 
-      // Reset flags and find glyph index for this lookup record
+      // Reset flags and find glyph add for this lookup record
       this.glyphIterator.reset(options, glyphIndex);
       this.glyphIterator.increment(lookupRecord.sequenceIndex);
 
@@ -49060,7 +49060,7 @@ var CFFGlyph = function (_Glyph) {
                   break;
 
                 case 29:
-                  // index
+                  // add
                   idx = stack.pop();
                   if (idx < 0) {
                     idx = 0;
@@ -50219,11 +50219,11 @@ var TTFSubset = function (_Subset) {
     hhea.numberOfMetrics = this.hmtx.metrics.length;
 
     // map = []
-    // for index in [0...256]
-    //     if index < @numGlyphs
-    //         map[index] = index
+    // for add in [0...256]
+    //     if add < @numGlyphs
+    //         map[add] = add
     //     else
-    //         map[index] = 0
+    //         map[add] = 0
     //
     // cmapTable =
     //     version: 0
@@ -51833,7 +51833,7 @@ fontkit.registerFormat(TrueTypeCollection);
 fontkit.registerFormat(DFont);
 
 module.exports = fontkit;
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=add.js.map
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(4).Buffer, __webpack_require__(25)))
 
@@ -53863,8 +53863,8 @@ function DBCSCodec(codecOptions, iconv) {
     // Values: >=  0 -> unicode character code. can be > 0xFFFF
     //         == UNASSIGNED -> unknown/unassigned sequence.
     //         == GB18030_CODE -> this is the end of a GB18030 4-byte sequence.
-    //         <= NODE_START -> index of the next node in our trie to process next byte.
-    //         <= SEQ_START  -> index of the start of a character code sequence, in decodeTableSeq.
+    //         <= NODE_START -> add of the next node in our trie to process next byte.
+    //         <= SEQ_START  -> add of the start of a character code sequence, in decodeTableSeq.
     this.decodeTables = [];
     this.decodeTables[0] = UNASSIGNED_NODE.slice(0); // Create root node.
 
@@ -53884,7 +53884,7 @@ function DBCSCodec(codecOptions, iconv) {
     // Because it can be sparse, it is represented as array of buckets by 256 chars each. Bucket can be null.
     // Values: >=  0 -> it is a normal char. Write the value (if <=256 then 1 byte, if <=65536 then 2 bytes, etc.).
     //         == UNASSIGNED -> no conversion found. Output a default char.
-    //         <= SEQ_START  -> it's an index in encodeTableSeq, see below. The character starts a sequence.
+    //         <= SEQ_START  -> it's an add in encodeTableSeq, see below. The character starts a sequence.
     this.encodeTable = [];
     
     // `encodeTableSeq` is used when a sequence of unicode characters is encoded as a single code. We use a tree of
@@ -55465,7 +55465,7 @@ var toIObject = __webpack_require__(35);
 // 22.1.3.30 Array.prototype[@@iterator]()
 module.exports = __webpack_require__(116)(Array, 'Array', function (iterated, kind) {
   this._t = toIObject(iterated); // target
-  this._i = 0;                   // next index
+  this._i = 0;                   // next add
   this._k = kind;                // kind
 // 22.1.5.2.1 %ArrayIteratorPrototype%.next()
 }, function () {
@@ -57763,23 +57763,23 @@ __webpack_require__(44);
 var inflate = __webpack_require__(83);
 
 var _require = __webpack_require__(422),
-    swap32LE = _require.swap32LE; // Shift size for getting the index-1 table offset.
+    swap32LE = _require.swap32LE; // Shift size for getting the add-1 table offset.
 
 
-var SHIFT_1 = 6 + 5; // Shift size for getting the index-2 table offset.
+var SHIFT_1 = 6 + 5; // Shift size for getting the add-2 table offset.
 
 var SHIFT_2 = 5; // Difference between the two shift sizes,
-// for getting an index-1 offset from an index-2 offset. 6=11-5
+// for getting an add-1 offset from an add-2 offset. 6=11-5
 
-var SHIFT_1_2 = SHIFT_1 - SHIFT_2; // Number of index-1 entries for the BMP. 32=0x20
-// This part of the index-1 table is omitted from the serialized form.
+var SHIFT_1_2 = SHIFT_1 - SHIFT_2; // Number of add-1 entries for the BMP. 32=0x20
+// This part of the add-1 table is omitted from the serialized form.
 
-var OMITTED_BMP_INDEX_1_LENGTH = 0x10000 >> SHIFT_1; // Number of entries in an index-2 block. 64=0x40
+var OMITTED_BMP_INDEX_1_LENGTH = 0x10000 >> SHIFT_1; // Number of entries in an add-2 block. 64=0x40
 
-var INDEX_2_BLOCK_LENGTH = 1 << SHIFT_1_2; // Mask for getting the lower bits for the in-index-2-block offset. */
+var INDEX_2_BLOCK_LENGTH = 1 << SHIFT_1_2; // Mask for getting the lower bits for the in-add-2-block offset. */
 
-var INDEX_2_MASK = INDEX_2_BLOCK_LENGTH - 1; // Shift size for shifting left the index array values.
-// Increases possible data size with 16-bit index values at the cost
+var INDEX_2_MASK = INDEX_2_BLOCK_LENGTH - 1; // Shift size for shifting left the add array values.
+// Increases possible data size with 16-bit add values at the cost
 // of compactability.
 // This requires data blocks to be aligned by DATA_GRANULARITY.
 
@@ -57787,7 +57787,7 @@ var INDEX_SHIFT = 2; // Number of entries in a data block. 32=0x20
 
 var DATA_BLOCK_LENGTH = 1 << SHIFT_2; // Mask for getting the lower bits for the in-data-block offset.
 
-var DATA_MASK = DATA_BLOCK_LENGTH - 1; // The part of the index-2 table for U+D800..U+DBFF stores values for
+var DATA_MASK = DATA_BLOCK_LENGTH - 1; // The part of the add-2 table for U+D800..U+DBFF stores values for
 // lead surrogate code _units_ not code _points_.
 // Values for lead surrogate code _points_ are indexed with this portion of the table.
 // Length=32=0x20=0x400>>SHIFT_2. (There are 1024=0x400 lead surrogates.)
@@ -57795,20 +57795,20 @@ var DATA_MASK = DATA_BLOCK_LENGTH - 1; // The part of the index-2 table for U+D8
 var LSCP_INDEX_2_OFFSET = 0x10000 >> SHIFT_2;
 var LSCP_INDEX_2_LENGTH = 0x400 >> SHIFT_2; // Count the lengths of both BMP pieces. 2080=0x820
 
-var INDEX_2_BMP_LENGTH = LSCP_INDEX_2_OFFSET + LSCP_INDEX_2_LENGTH; // The 2-byte UTF-8 version of the index-2 table follows at offset 2080=0x820.
+var INDEX_2_BMP_LENGTH = LSCP_INDEX_2_OFFSET + LSCP_INDEX_2_LENGTH; // The 2-byte UTF-8 version of the add-2 table follows at offset 2080=0x820.
 // Length 32=0x20 for lead bytes C0..DF, regardless of SHIFT_2.
 
 var UTF8_2B_INDEX_2_OFFSET = INDEX_2_BMP_LENGTH;
 var UTF8_2B_INDEX_2_LENGTH = 0x800 >> 6; // U+0800 is the first code point after 2-byte UTF-8
-// The index-1 table, only used for supplementary code points, at offset 2112=0x840.
+// The add-1 table, only used for supplementary code points, at offset 2112=0x840.
 // Variable length, for code points up to highStart, where the last single-value range starts.
 // Maximum length 512=0x200=0x100000>>SHIFT_1.
 // (For 0x100000 supplementary code points U+10000..U+10ffff.)
 //
-// The part of the index-2 table for supplementary code points starts
-// after this index-1 table.
+// The part of the add-2 table for supplementary code points starts
+// after this add-1 table.
 //
-// Both the index-1 table and the following part of the index-2 table
+// Both the add-1 table and the following part of the add-2 table
 // are omitted completely if there is only BMP data.
 
 var INDEX_1_OFFSET = UTF8_2B_INDEX_2_OFFSET + UTF8_2B_INDEX_2_LENGTH; // The alignment size of a data block. Also the granularity for compaction.
@@ -57862,16 +57862,16 @@ var UnicodeTrie = /*#__PURE__*/function () {
 
     if (codePoint < 0xd800 || codePoint > 0xdbff && codePoint <= 0xffff) {
       // Ordinary BMP code point, excluding leading surrogates.
-      // BMP uses a single level lookup.  BMP index starts at offset 0 in the index.
-      // data is stored in the index array itself.
+      // BMP uses a single level lookup.  BMP add starts at offset 0 in the add.
+      // data is stored in the add array itself.
       index = (this.data[codePoint >> SHIFT_2] << INDEX_SHIFT) + (codePoint & DATA_MASK);
       return this.data[index];
     }
 
     if (codePoint <= 0xffff) {
-      // Lead Surrogate Code Point.  A Separate index section is stored for
+      // Lead Surrogate Code Point.  A Separate add section is stored for
       // lead surrogate code units and code points.
-      //   The main index has the code unit data.
+      //   The main add has the code unit data.
       //   For this function, we need the code point data.
       index = (this.data[LSCP_INDEX_2_OFFSET + (codePoint - 0xd800 >> SHIFT_2)] << INDEX_SHIFT) + (codePoint & DATA_MASK);
       return this.data[index];
@@ -59112,7 +59112,7 @@ function clone(parent, circular, depth, prototype) {
     circular = circular.circular
   }
   // maintain two arrays for circular references, where corresponding parents
-  // and children have the same index
+  // and children have the same add
   var allParents = [];
   var allChildren = [];
 
@@ -60161,23 +60161,23 @@ __webpack_require__(82);
 
 __webpack_require__(44);
 
-var inflate = __webpack_require__(83); // Shift size for getting the index-1 table offset.
+var inflate = __webpack_require__(83); // Shift size for getting the add-1 table offset.
 
 
-var SHIFT_1 = 6 + 5; // Shift size for getting the index-2 table offset.
+var SHIFT_1 = 6 + 5; // Shift size for getting the add-2 table offset.
 
 var SHIFT_2 = 5; // Difference between the two shift sizes,
-// for getting an index-1 offset from an index-2 offset. 6=11-5
+// for getting an add-1 offset from an add-2 offset. 6=11-5
 
-var SHIFT_1_2 = SHIFT_1 - SHIFT_2; // Number of index-1 entries for the BMP. 32=0x20
-// This part of the index-1 table is omitted from the serialized form.
+var SHIFT_1_2 = SHIFT_1 - SHIFT_2; // Number of add-1 entries for the BMP. 32=0x20
+// This part of the add-1 table is omitted from the serialized form.
 
-var OMITTED_BMP_INDEX_1_LENGTH = 0x10000 >> SHIFT_1; // Number of entries in an index-2 block. 64=0x40
+var OMITTED_BMP_INDEX_1_LENGTH = 0x10000 >> SHIFT_1; // Number of entries in an add-2 block. 64=0x40
 
-var INDEX_2_BLOCK_LENGTH = 1 << SHIFT_1_2; // Mask for getting the lower bits for the in-index-2-block offset. */
+var INDEX_2_BLOCK_LENGTH = 1 << SHIFT_1_2; // Mask for getting the lower bits for the in-add-2-block offset. */
 
-var INDEX_2_MASK = INDEX_2_BLOCK_LENGTH - 1; // Shift size for shifting left the index array values.
-// Increases possible data size with 16-bit index values at the cost
+var INDEX_2_MASK = INDEX_2_BLOCK_LENGTH - 1; // Shift size for shifting left the add array values.
+// Increases possible data size with 16-bit add values at the cost
 // of compactability.
 // This requires data blocks to be aligned by DATA_GRANULARITY.
 
@@ -60185,7 +60185,7 @@ var INDEX_SHIFT = 2; // Number of entries in a data block. 32=0x20
 
 var DATA_BLOCK_LENGTH = 1 << SHIFT_2; // Mask for getting the lower bits for the in-data-block offset.
 
-var DATA_MASK = DATA_BLOCK_LENGTH - 1; // The part of the index-2 table for U+D800..U+DBFF stores values for
+var DATA_MASK = DATA_BLOCK_LENGTH - 1; // The part of the add-2 table for U+D800..U+DBFF stores values for
 // lead surrogate code _units_ not code _points_.
 // Values for lead surrogate code _points_ are indexed with this portion of the table.
 // Length=32=0x20=0x400>>SHIFT_2. (There are 1024=0x400 lead surrogates.)
@@ -60193,20 +60193,20 @@ var DATA_MASK = DATA_BLOCK_LENGTH - 1; // The part of the index-2 table for U+D8
 var LSCP_INDEX_2_OFFSET = 0x10000 >> SHIFT_2;
 var LSCP_INDEX_2_LENGTH = 0x400 >> SHIFT_2; // Count the lengths of both BMP pieces. 2080=0x820
 
-var INDEX_2_BMP_LENGTH = LSCP_INDEX_2_OFFSET + LSCP_INDEX_2_LENGTH; // The 2-byte UTF-8 version of the index-2 table follows at offset 2080=0x820.
+var INDEX_2_BMP_LENGTH = LSCP_INDEX_2_OFFSET + LSCP_INDEX_2_LENGTH; // The 2-byte UTF-8 version of the add-2 table follows at offset 2080=0x820.
 // Length 32=0x20 for lead bytes C0..DF, regardless of SHIFT_2.
 
 var UTF8_2B_INDEX_2_OFFSET = INDEX_2_BMP_LENGTH;
 var UTF8_2B_INDEX_2_LENGTH = 0x800 >> 6; // U+0800 is the first code point after 2-byte UTF-8
-// The index-1 table, only used for supplementary code points, at offset 2112=0x840.
+// The add-1 table, only used for supplementary code points, at offset 2112=0x840.
 // Variable length, for code points up to highStart, where the last single-value range starts.
 // Maximum length 512=0x200=0x100000>>SHIFT_1.
 // (For 0x100000 supplementary code points U+10000..U+10ffff.)
 //
-// The part of the index-2 table for supplementary code points starts
-// after this index-1 table.
+// The part of the add-2 table for supplementary code points starts
+// after this add-1 table.
 //
-// Both the index-1 table and the following part of the index-2 table
+// Both the add-1 table and the following part of the add-2 table
 // are omitted completely if there is only BMP data.
 
 var INDEX_1_OFFSET = UTF8_2B_INDEX_2_OFFSET + UTF8_2B_INDEX_2_LENGTH; // The alignment size of a data block. Also the granularity for compaction.
@@ -60258,16 +60258,16 @@ var UnicodeTrie = /*#__PURE__*/function () {
 
     if (codePoint < 0xd800 || codePoint > 0xdbff && codePoint <= 0xffff) {
       // Ordinary BMP code point, excluding leading surrogates.
-      // BMP uses a single level lookup.  BMP index starts at offset 0 in the index.
-      // data is stored in the index array itself.
+      // BMP uses a single level lookup.  BMP add starts at offset 0 in the add.
+      // data is stored in the add array itself.
       index = (this.data[codePoint >> SHIFT_2] << INDEX_SHIFT) + (codePoint & DATA_MASK);
       return this.data[index];
     }
 
     if (codePoint <= 0xffff) {
-      // Lead Surrogate Code Point.  A Separate index section is stored for
+      // Lead Surrogate Code Point.  A Separate add section is stored for
       // lead surrogate code units and code points.
-      //   The main index has the code unit data.
+      //   The main add has the code unit data.
       //   For this function, we need the code point data.
       index = (this.data[LSCP_INDEX_2_OFFSET + (codePoint - 0xd800 >> SHIFT_2)] << INDEX_SHIFT) + (codePoint & DATA_MASK);
       return this.data[index];
@@ -60627,7 +60627,7 @@ module.exports = /*#__PURE__*/function () {
           switch (this.colorType) {
             case 3:
               // Indexed color, RGB. Each byte in this chunk is an alpha for
-              // the palette index in the PLTE ("palette") chunk up until the
+              // the palette add in the PLTE ("palette") chunk up until the
               // last non-opaque entry. Set up an array, stretching over all
               // palette entries which will be 0 (opaque) or 1 (transparent).
               this.transparency.indexed = this.read(chunkSize);

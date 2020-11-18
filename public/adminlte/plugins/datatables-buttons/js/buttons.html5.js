@@ -485,7 +485,7 @@ function _createNode( doc, nodeName, opts ) {
 /**
  * Get the width for an Excel column based on the contents of that column
  * @param  {object} data Data for export
- * @param  {int}    col  Column index
+ * @param  {int}    col  Column add
  * @return {int}         Column width
  */
 function _excelColWidth( data, col ) {

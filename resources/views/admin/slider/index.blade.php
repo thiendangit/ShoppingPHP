@@ -2,7 +2,7 @@
 
 @section('title', 'Page Title')
 @section('css')
-    <link href="{{ asset('admins/slider/index/list.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admins/slider/index/list.css') }}" rel="stylesheet"/>
 @endsection
 @section('content')
     <div class="content-wrapper">
@@ -41,8 +41,10 @@
                                     <td>{{$slider->description}}</td>
                                     <td><img src="{{$slider->image_path}}" alt="" class="image_slider_150_100"/></td>
                                     <td>
-                                        <a href="{{route('slider.edit', ['id' => $slider->id])}}" class="btn btn-default">Edit</a>
-                                        <a href="{{route('menus.delete', ['id' => $slider->id])}}" class="btn btn-danger">Delete</a>
+                                        <a href="{{route('slider.edit', ['id' => $slider->id])}}"
+                                           class="btn btn-default">Edit</a>
+                                        <a class="btn btn-danger action_delete"
+                                           data-url="{{route('slider.delete',['id' => $slider->id])}}">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -57,4 +59,8 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+@section('js')
+    <script src="{{ asset('vendors/sweetAlert2/sweetalert2@10.js')}}"></script>
+    <script src="{{ asset('admins/slider/index/list.js') }}"></script>
+@endsection
 @endsection

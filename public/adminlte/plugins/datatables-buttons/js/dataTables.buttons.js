@@ -102,7 +102,7 @@ $.extend( Buttons.prototype, {
 
 	/**
 	 * Get the action of a button
-	 * @param  {int|string} Button index
+	 * @param  {int|string} Button add
 	 * @return {function}
 	 *//**
 	 * Set the action of a button
@@ -147,7 +147,7 @@ $.extend( Buttons.prototype, {
 	/**
 	 * Add a new button
 	 * @param {object} config Button configuration object, base string name or function
-	 * @param {int|string} [idx] Button index for where to insert the button
+	 * @param {int|string} [idx] Button add for where to insert the button
 	 * @return {Buttons} Self for chaining
 	 */
 	add: function ( config, idx )
@@ -330,11 +330,11 @@ $.extend( Buttons.prototype, {
 
 	/**
 	 * Get the text for a button
-	 * @param  {int|string} node Button index
+	 * @param  {int|string} node Button add
 	 * @return {string} Button text
 	 *//**
 	 * Set the text for a button
-	 * @param  {int|string|function} node Button index
+	 * @param  {int|string|function} node Button add
 	 * @param  {string} label Text
 	 * @return {Buttons} Self for chaining
 	 */
@@ -1257,7 +1257,7 @@ Buttons.buttonSelector = function ( insts, selector )
 			}
 		}
 		else if ( typeof selector === 'number' ) {
-			// Main button index selector
+			// Main button add selector
 			ret.push( {
 				inst: inst,
 				node: inst.s.buttons[ selector ].node
@@ -1273,7 +1273,7 @@ Buttons.buttonSelector = function ( insts, selector )
 				}
 			}
 			else if ( selector.match( /^\d+(\-\d+)*$/ ) ) {
-				// Sub-button index selector
+				// Sub-button add selector
 				var indexes = $.map( buttons, function (v) {
 					return v.idx;
 				} );

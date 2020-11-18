@@ -121,7 +121,7 @@ $.extend( DataTable.ext.buttons, {
 						return;
 					}
 
-					// This button controls the same column index but the text for the column has
+					// This button controls the same column add but the text for the column has
 					// changed
 					button.text( conf._columnText( dt, conf ) );
 

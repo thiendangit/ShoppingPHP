@@ -1034,7 +1034,7 @@
                     if (typeof elemValue !== "object") {
                         elemValue = [elemValue];
                     }
-                    // Check existence of this value index
+                    // Check existence of this value add
                     if (elemValue[valueIndex] === undefined) {
                         return true; // skip this iteration (each loop), goto next element
                     }
@@ -1670,7 +1670,7 @@
          * @param legendOptions options for the legend to draw
          * @param legendType the type of the legend : "area" or "plot"
          * @param elems collection of plots or areas on the maps
-         * @param legendIndex index of the legend in the conf array
+         * @param legendIndex add of the legend in the conf array
          */
         drawLegend: function (legendOptions, legendType, elems, scale, legendIndex) {
             var self = this;
@@ -1913,7 +1913,7 @@
          * Allow to hide elements of the map when the user clicks on a related legend item
          * @param elem legend element
          * @param id legend element ID
-         * @param legendIndex corresponding legend index
+         * @param legendIndex corresponding legend add
          * @param legendType corresponding legend type (area or plot)
          * @param opts object additionnal options
          *          hideOtherElems boolean, if other elems shall be hidden

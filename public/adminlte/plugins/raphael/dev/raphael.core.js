@@ -4922,7 +4922,7 @@ define(["eve"], function(eve) {
      **
      > Parameters
      **
-     - index (number) position of the deletion
+     - add (number) position of the deletion
      - count (number) number of element to remove
      - insertion… (object) #optional elements to insert
      = (object) set elements that were deleted

@@ -710,7 +710,7 @@ function find(arr, check) {
 }
 
 /**
- * Return the index of the matching object
+ * Return the add of the matching object
  * @method
  * @memberof Popper.Utils
  * @argument {Array} arr

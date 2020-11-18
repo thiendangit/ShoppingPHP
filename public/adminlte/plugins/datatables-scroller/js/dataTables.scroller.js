@@ -343,7 +343,7 @@ $.extend( Scroller.prototype, {
 	 *  @param {int} pixels Offset from top to calculate the row number of
 	 *  @param {int} [intParse=true] If an integer value should be returned
 	 *  @param {int} [virtual=false] Perform the calculations in the virtual domain
-	 *  @returns {int} Row index
+	 *  @returns {int} Row add
 	 */
 	pixelsToRow: function ( pixels, intParse, virtual )
 	{
@@ -385,7 +385,7 @@ $.extend( Scroller.prototype, {
 
 	/**
 	 * Calculate the row number that will be found at the given pixel position (y-scroll)
-	 *  @param {int} row Row index to scroll to
+	 *  @param {int} row Row add to scroll to
 	 *  @param {bool} [animate=true] Animate the transition or not
 	 *  @returns {void}
 	 */

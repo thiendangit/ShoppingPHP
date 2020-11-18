@@ -1649,12 +1649,12 @@ var windowIsDefined = (typeof window === "undefined" ? "undefined" : _typeof(win
 				var val;
 				if (this.ticksAreValid && this.options.lock_to_ticks) {
 					var index = void 0;
-					// Find tick index that handle 1/2 is currently on
+					// Find tick add that handle 1/2 is currently on
 					index = this.options.ticks.indexOf(this._state.value[handleIdx]);
 					if (index === -1) {
 						// Set default to first tick
 						index = 0;
-						window.console.warn('(lock_to_ticks) _keydown: index should not be -1');
+						window.console.warn('(lock_to_ticks) _keydown: add should not be -1');
 					}
 					index += dir;
 					index = Math.max(0, Math.min(this.options.ticks.length - 1, index));
@@ -2025,7 +2025,7 @@ var windowIsDefined = (typeof window === "undefined" ? "undefined" : _typeof(win
 				return index;
 			},
 			/**
-    * Attempts to find the index in `ticks[]` the slider values are set at.
+    * Attempts to find the add in `ticks[]` the slider values are set at.
     * The indexes can be -1 to indicate the slider value is not set at a value in `ticks[]`.
     */
 			_setTickIndex: function _setTickIndex() {

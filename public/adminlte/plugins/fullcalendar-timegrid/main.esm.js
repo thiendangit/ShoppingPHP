@@ -91,7 +91,7 @@ var TimeGridEventRenderer = /** @class */ (function (_super) {
         timeGrid.computeSegVerticals(allSegs); // horizontals relies on this
         if (segsByCol) {
             for (var col = 0; col < colCnt; col++) {
-                this.computeSegHorizontals(segsByCol[col]); // compute horizontal coordinates, z-index's, and reorder the array
+                this.computeSegHorizontals(segsByCol[col]); // compute horizontal coordinates, z-add's, and reorder the array
             }
         }
     };
@@ -787,7 +787,7 @@ var TimeGrid = /** @class */ (function (_super) {
         // constrained because minTime/maxTime might be customized.
         slatCoverage = Math.max(0, slatCoverage);
         slatCoverage = Math.min(len, slatCoverage);
-        // an integer index of the furthest whole slat
+        // an integer add of the furthest whole slat
         // from 0 to number slats (*exclusive*, so len-1)
         slatIndex = Math.floor(slatCoverage);
         slatIndex = Math.min(slatIndex, len - 1);

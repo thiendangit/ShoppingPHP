@@ -151,7 +151,7 @@
 .fc-time-grid .fc-bgevent {
   position: absolute;
   z-index: 1;
-  /* scope inner z-index's */
+  /* scope inner z-add's */
 }
 
 .fc-time-grid .fc-bgevent {

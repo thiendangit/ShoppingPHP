@@ -222,13 +222,13 @@ handler that will select the items using the API methods.
  * style cell selection.
  *
  * Cell range is more complicated than row and column as we want to select
- * in the visible grid rather than by index in sequence. For example, if you
+ * in the visible grid rather than by add in sequence. For example, if you
  * click first in cell 1-1 and then shift click in 2-2 - cells 1-2 and 2-1
  * should also be selected (and not 1-3, 1-4. etc)
  * 
  * @param  {DataTable.Api} dt   DataTable
- * @param  {object}        idx  Cell index to select to
- * @param  {object}        last Cell index to select from
+ * @param  {object}        idx  Cell add to select to
+ * @param  {object}        last Cell add to select from
  * @private
  */
 function cellRange( dt, idx, last )
@@ -580,7 +580,7 @@ function init ( ctx ) {
 		api.one( 'draw.dt.dtSelect', function () {
 			api.rows( rows ).select();
 
-			// `cells` is not a cell index selector, so it needs a loop
+			// `cells` is not a cell add selector, so it needs a loop
 			if ( cells.any() ) {
 				cells.each( function ( id ) {
 					api.cells( id.row, id.column ).select();
@@ -607,8 +607,8 @@ function init ( ctx ) {
  *
  * @param  {DataTable.Api} dt   DataTable
  * @param  {string}        type Row or column range selector
- * @param  {object}        idx  Item index to select to
- * @param  {object}        last Item index to select from
+ * @param  {object}        idx  Item add to select to
+ * @param  {object}        last Item add to select from
  * @private
  */
 function rowColumnRange( dt, type, idx, last )

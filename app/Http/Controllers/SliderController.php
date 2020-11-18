@@ -83,5 +83,22 @@ class SliderController extends Controller
         }
     }
 
+    public function delete($id)
+    {
+        try {
+            $this->slider->find($id)->delete();
+            return response()->json([
+                'code' => 200,
+                'message' => 'success'
+            ],200);
+        }catch (\Exception $e){
+            Log::error("Message : " . $e->getMessage() . 'Line:' . $e->getLine());
+            return response()->json([
+                'code' => $e->getCode(),
+                'message' => $e->getMessage()
+            ], $e->getCode());
+        }
+    }
+
 
 }

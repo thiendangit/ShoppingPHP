@@ -425,7 +425,7 @@ var DayGridEventRenderer = /** @class */ (function (_super) {
                     break;
                 }
             }
-            // `j` now holds the desired subrow index
+            // `j` now holds the desired subrow add
             seg.level = j;
             seg.leftCol = isRtl ? (colCnt - 1 - seg.lastCol) : seg.firstCol; // for sorting only
             seg.rightCol = isRtl ? (colCnt - 1 - seg.firstCol) : seg.lastCol // for sorting only

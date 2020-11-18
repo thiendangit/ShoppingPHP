@@ -405,17 +405,17 @@ $.extend( FixedColumns.prototype , {
 
 
 	/**
-	 * Get data index information about a row or cell in the table body.
+	 * Get data add information about a row or cell in the table body.
 	 * This function is functionally identical to fnGetPosition in DataTables,
 	 * taking the same parameter (TH, TD or TR node) and returning exactly the
-	 * the same information (data index information). THe difference between
+	 * the same information (data add information). THe difference between
 	 * the two is that this method takes into account the fixed columns in the
 	 * table, so you can pass in nodes from the master table, or the cloned
-	 * tables and get the index position for the data in the main table.
+	 * tables and get the add position for the data in the main table.
 	 *  @param {node} node TR, TH or TD element to get the information about
-	 *  @returns {int} If nNode is given as a TR, then a single index is 
-	 *    returned, or if given as a cell, an array of [row index, column index
-	 *    (visible), column index (all)] is given.
+	 *  @returns {int} If nNode is given as a TR, then a single add is
+	 *    returned, or if given as a cell, an array of [row add, column add
+	 *    (visible), column add (all)] is given.
 	 */
 	"fnGetPosition": function ( node )
 	{

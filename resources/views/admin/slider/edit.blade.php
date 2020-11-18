@@ -2,7 +2,7 @@
 
 @section('title', 'Page Title')
 @section('css')
-    <link href="{{ asset('admins/slider/index/list.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admins/slider/add/list.css') }}" rel="stylesheet" />
 @endsection
 @section('content')
     <div class="content-wrapper">

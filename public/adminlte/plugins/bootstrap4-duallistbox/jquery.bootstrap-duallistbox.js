@@ -84,8 +84,8 @@
   function updateSelectionStates(dualListbox) {
     dualListbox.element.find('option').each(function(index, item) {
       var $item = $(item);
-      if (typeof($item.data('original-index')) === 'undefined') {
-        $item.data('original-index', dualListbox.elementCount++);
+      if (typeof($item.data('original-add')) === 'undefined') {
+        $item.data('original-add', dualListbox.elementCount++);
       }
       if (typeof($item.data('_selected')) === 'undefined') {
         $item.data('_selected', false);
@@ -96,7 +96,7 @@
   function changeSelectionState(dualListbox, original_index, selected) {
     dualListbox.element.find('option').each(function(index, item) {
       var $item = $(item);
-      if ($item.data('original-index') === original_index) {
+      if ($item.data('original-add') === original_index) {
         $item.prop('selected', selected);
         if(selected){
           $item.attr('data-sortindex', dualListbox.sortIndex);
@@ -205,7 +205,7 @@
         isFiltered = false;
         dualListbox.elements['select'+selectIndex].append($item.clone(true).prop('selected', $item.data('_selected')));
       }
-      allOptions.eq($item.data('original-index')).data('filtered'+selectIndex, isFiltered);
+      allOptions.eq($item.data('original-add')).data('filtered'+selectIndex, isFiltered);
     });
 
     refreshInfo(dualListbox);
@@ -215,7 +215,7 @@
     var options = dualListbox.element.find('option');
     dualListbox.elements['select'+selectIndex].find('option').each(function(index, item) {
       var $item = $(item);
-      options.eq($item.data('original-index')).data('_selected', $item.prop('selected'));
+      options.eq($item.data('original-add')).data('_selected', $item.prop('selected'));
     });
   }
 
@@ -240,7 +240,7 @@
 
   function sortOptions(select) {
     select.find('option').sort(function(a, b) {
-      return ($(a).data('original-index') > $(b).data('original-index')) ? 1 : -1;
+      return ($(a).data('original-add') > $(b).data('original-add')) ? 1 : -1;
     }).appendTo(select);
   }
 
@@ -261,7 +261,7 @@
     dualListbox.elements.select1.find('option:selected').each(function(index, item) {
       var $item = $(item);
       if (!$item.data('filtered1')) {
-        changeSelectionState(dualListbox, $item.data('original-index'), true);
+        changeSelectionState(dualListbox, $item.data('original-add'), true);
       }
     });
 
@@ -285,7 +285,7 @@
     dualListbox.elements.select2.find('option:selected').each(function(index, item) {
       var $item = $(item);
       if (!$item.data('filtered2')) {
-        changeSelectionState(dualListbox, $item.data('original-index'), false);
+        changeSelectionState(dualListbox, $item.data('original-add'), false);
       }
     });
 

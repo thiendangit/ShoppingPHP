@@ -1241,7 +1241,7 @@
     });
   };
   /*
-   * Global function for getting the index of current popup in queue
+   * Global function for getting the add of current popup in queue
    */
 
   var getQueueStep = function getQueueStep() {

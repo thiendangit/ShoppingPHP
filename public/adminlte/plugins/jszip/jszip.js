@@ -1810,19 +1810,19 @@ DataReader.prototype = {
         this.checkIndex(this.index + offset);
     },
     /**
-     * Check that the specified index will not be too far.
-     * @param {string} newIndex the index to check.
-     * @throws {Error} an Error if the index is out of bounds.
+     * Check that the specified add will not be too far.
+     * @param {string} newIndex the add to check.
+     * @throws {Error} an Error if the add is out of bounds.
      */
     checkIndex: function(newIndex) {
         if (this.length < this.zero + newIndex || newIndex < 0) {
-            throw new Error("End of data reached (data length = " + this.length + ", asked index = " + (newIndex) + "). Corrupted zip ?");
+            throw new Error("End of data reached (data length = " + this.length + ", asked add = " + (newIndex) + "). Corrupted zip ?");
         }
     },
     /**
-     * Change the index.
-     * @param {number} newIndex The new index.
-     * @throws {Error} if the new index is out of the data.
+     * Change the add.
+     * @param {number} newIndex The new add.
+     * @throws {Error} if the new add is out of the data.
      */
     setIndex: function(newIndex) {
         this.checkIndex(newIndex);
@@ -1831,14 +1831,14 @@ DataReader.prototype = {
     /**
      * Skip the next n bytes.
      * @param {number} n the number of bytes to skip.
-     * @throws {Error} if the new index is out of the data.
+     * @throws {Error} if the new add is out of the data.
      */
     skip: function(n) {
         this.setIndex(this.index + n);
     },
     /**
-     * Get the byte at the specified index.
-     * @param {number} i the index to use.
+     * Get the byte at the specified add.
+     * @param {number} i the add to use.
      * @return {number} a byte.
      */
     byteAt: function(i) {
@@ -1878,7 +1878,7 @@ DataReader.prototype = {
     /**
      * Find the last occurrence of a zip signature (4 bytes).
      * @param {string} sig the signature to find.
-     * @return {number} the index of the last occurrence, -1 if not found.
+     * @return {number} the add of the last occurrence, -1 if not found.
      */
     lastIndexOfSignature: function(sig) {
         // see implementations
@@ -3541,8 +3541,8 @@ ZipEntries.prototype = {
         }
     },
     /**
-     * Check if the given signature is at the given index.
-     * @param {number} askedIndex the index to check.
+     * Check if the given signature is at the given add.
+     * @param {number} askedIndex the add to check.
      * @param {string} expectedSignature the signature to expect.
      * @return {boolean} true if the signature is here, false otherwise.
      */
@@ -6110,7 +6110,7 @@ function longest_match(s, cur_match) {
   var prev  = s.prev;
 
   /* Stop when cur_match becomes <= limit. To simplify the code,
-   * we prevent matches with the string of window index 0.
+   * we prevent matches with the string of window add 0.
    */
 
   var strend = s.strstart + MAX_MATCH;
@@ -6498,7 +6498,7 @@ function deflate_fast(s, flush) {
      */
     if (hash_head !== 0/*NIL*/ && ((s.strstart - hash_head) <= (s.w_size - MIN_LOOKAHEAD))) {
       /* To simplify the code, we prevent matches with the string
-       * of window index 0 (in particular we have to avoid a match
+       * of window add 0 (in particular we have to avoid a match
        * of the string with itself at the start of the input file).
        */
       s.match_length = longest_match(s, hash_head);
@@ -6631,7 +6631,7 @@ function deflate_slow(s, flush) {
     if (hash_head !== 0/*NIL*/ && s.prev_length < s.max_lazy_match &&
         s.strstart - hash_head <= (s.w_size - MIN_LOOKAHEAD)/*MAX_DIST(s)*/) {
       /* To simplify the code, we prevent matches with the string
-       * of window index 0 (in particular we have to avoid a match
+       * of window add 0 (in particular we have to avoid a match
        * of the string with itself at the start of the input file).
        */
       s.match_length = longest_match(s, hash_head);
@@ -6986,14 +6986,14 @@ function DeflateState() {
    */
 
   this.prev = null;
-  /* Link to older string with same hash index. To limit the size of this
+  /* Link to older string with same hash add. To limit the size of this
    * array to 64K, this link is maintained only for the last 32K strings.
-   * An index in this array is thus a window index modulo 32K.
+   * An add in this array is thus a window add modulo 32K.
    */
 
   this.head = null;   /* Heads of the hash chains or NIL. */
 
-  this.ins_h = 0;       /* hash index of string to be inserted */
+  this.ins_h = 0;       /* hash add of string to be inserted */
   this.hash_size = 0;   /* number of elements in hash table */
   this.hash_bits = 0;   /* log2(hash_size) */
   this.hash_mask = 0;   /* hash_size-1 */
@@ -7088,7 +7088,7 @@ function DeflateState() {
   /* Depth of each subtree used as tie breaker for trees of equal frequency
    */
 
-  this.l_buf = 0;          /* buffer index for literals or lengths */
+  this.l_buf = 0;          /* buffer add for literals or lengths */
 
   this.lit_bufsize = 0;
   /* Size of match buffer for literals/lengths.  There are 4 reasons for
@@ -7110,10 +7110,10 @@ function DeflateState() {
    *   - I can't count above 4
    */
 
-  this.last_lit = 0;      /* running index in l_buf */
+  this.last_lit = 0;      /* running add in l_buf */
 
   this.d_buf = 0;
-  /* Buffer index for distances. To simplify the code, d_buf and l_buf have
+  /* Buffer add for distances. To simplify the code, d_buf and l_buf have
    * the same number of elements. To use different lengths, an extra flag
    * array would be necessary.
    */
@@ -7872,7 +7872,7 @@ module.exports = function inflate_fast(strm, start) {
 //#endif
   var wsize;                  /* window size or zero if not using window */
   var whave;                  /* valid bytes in the window */
-  var wnext;                  /* window write index */
+  var wnext;                  /* window write add */
   // Use `s_window` instead `window`, avoid conflict with instrumentation tools
   var s_window;               /* allocated sliding window, if wsize != 0 */
   var hold;                   /* local strm.hold */
@@ -8025,7 +8025,7 @@ module.exports = function inflate_fast(strm, start) {
 //                }
 //#endif
               }
-              from = 0; // window index
+              from = 0; // window add
               from_source = s_window;
               if (wnext === 0) {           /* very common case */
                 from += wsize - op;
@@ -8283,7 +8283,7 @@ function InflateState() {
   this.wbits = 0;             /* log base 2 of requested window size */
   this.wsize = 0;             /* window size or zero if not using window */
   this.whave = 0;             /* valid bytes in the window */
-  this.wnext = 0;             /* window write index */
+  this.wnext = 0;             /* window write add */
   this.window = null;         /* allocated sliding window, if needed */
 
   /* bit accumulator */
@@ -8300,8 +8300,8 @@ function InflateState() {
   /* fixed and dynamic code tables */
   this.lencode = null;          /* starting table for length/literal codes */
   this.distcode = null;         /* starting table for distance codes */
-  this.lenbits = 0;           /* index bits for lencode */
-  this.distbits = 0;          /* index bits for distcode */
+  this.lenbits = 0;           /* add bits for lencode */
+  this.distbits = 0;          /* add bits for distcode */
 
   /* dynamic table building */
   this.ncode = 0;             /* number of code length code lengths */
@@ -8424,7 +8424,7 @@ function inflateInit(strm) {
 
 
 /*
- Return state with length and distance decoding tables and index sizes set to
+ Return state with length and distance decoding tables and add sizes set to
  fixed code decoding.  Normally this returns fixed tables from inffixed.h.
  If BUILDFIXED is defined, then instead this routine builds the tables the
  first time it's called, and returns those tables the first time and
@@ -9765,16 +9765,16 @@ module.exports = function inflate_table(type, lens, lens_index, codes, table, ta
       //here = opts.here; /* table entry for duplication */
 
   var len = 0;               /* a code's length in bits */
-  var sym = 0;               /* index of code symbols */
+  var sym = 0;               /* add of code symbols */
   var min = 0, max = 0;          /* minimum and maximum code lengths */
-  var root = 0;              /* number of index bits for root table */
-  var curr = 0;              /* number of index bits for current table */
+  var root = 0;              /* number of add bits for root table */
+  var curr = 0;              /* number of add bits for current table */
   var drop = 0;              /* code bits to drop for sub-table */
   var left = 0;                   /* number of prefix codes available */
   var used = 0;              /* code entries in table used */
   var huff = 0;              /* Huffman code */
-  var incr;              /* for incrementing code, index */
-  var fill;              /* index for replicating entries */
+  var incr;              /* for incrementing code, add */
+  var fill;              /* add for replicating entries */
   var low;               /* low bits for current root entry */
   var mask;              /* mask for low root bits */
   var next;             /* next available space in table */
@@ -9886,14 +9886,14 @@ module.exports = function inflate_table(type, lens, lens_index, codes, table, ta
 
   /*
    Create and fill in decoding tables.  In this loop, the table being
-   filled is at next and has curr index bits.  The code being used is huff
-   with length len.  That code is converted to an index by dropping drop
+   filled is at next and has curr add bits.  The code being used is huff
+   with length len.  That code is converted to an add by dropping drop
    bits off of the bottom.  For codes where len is less than drop + curr,
    those top drop + curr - len bits are incremented through all values to
    fill the table with replicated entries.
 
-   root is the number of index bits for the root table.  When len exceeds
-   root, sub-tables are created pointed to by the root entry with an index
+   root is the number of add bits for the root table.  When len exceeds
+   root, sub-tables are created pointed to by the root entry with an add
    of the low root bits of huff.  This is saved in low to check for when a
    new sub-table should be started.  drop is zero when the root table is
    being filled, and drop is root when sub-tables are being filled.
@@ -9940,8 +9940,8 @@ module.exports = function inflate_table(type, lens, lens_index, codes, table, ta
   sym = 0;                    /* starting code symbol */
   len = min;                  /* starting code length */
   next = table_index;              /* current table to fill in */
-  curr = root;                /* current table index bits */
-  drop = 0;                   /* current bits to drop from code for index */
+  curr = root;                /* current table add bits */
+  drop = 0;                   /* current bits to drop from code for add */
   low = -1;                   /* trigger new sub-table when len > root */
   used = 1 << root;          /* use root table entries */
   mask = used - 1;            /* mask for comparing low */
@@ -10253,7 +10253,7 @@ function StaticTreeDesc(static_tree, extra_bits, extra_base, elems, max_length) 
 
   this.static_tree  = static_tree;  /* static tree or NULL */
   this.extra_bits   = extra_bits;   /* extra bits for each code or NULL */
-  this.extra_base   = extra_base;   /* base index for extra_bits */
+  this.extra_base   = extra_base;   /* base add for extra_bits */
   this.elems        = elems;        /* max number of elements in the tree */
   this.max_length   = max_length;   /* max bit length for the codes */
 
@@ -10368,7 +10368,7 @@ function gen_bitlen(s, desc)
   var extra           = desc.stat_desc.extra_bits;
   var base            = desc.stat_desc.extra_base;
   var max_length      = desc.stat_desc.max_length;
-  var h;              /* heap index */
+  var h;              /* heap add */
   var n, m;           /* iterate over the tree elements */
   var bits;           /* bit length */
   var xbits;          /* extra bits */
@@ -10461,8 +10461,8 @@ function gen_codes(tree, max_code, bl_count)
 {
   var next_code = new Array(MAX_BITS + 1); /* next code value for each bit length */
   var code = 0;              /* running code value */
-  var bits;                  /* bit index */
-  var n;                     /* code index */
+  var bits;                  /* bit add */
+  var n;                     /* code add */
 
   /* The distribution counts are first used to generate the code values
    * without bit reversal.
@@ -10497,7 +10497,7 @@ function tr_static_init() {
   var bits;     /* bit counter */
   var length;   /* length value */
   var code;     /* code value */
-  var dist;     /* distance index */
+  var dist;     /* distance add */
   var bl_count = new Array(MAX_BITS + 1);
   /* number of codes at each bit length for an optimal tree */
 
@@ -10705,7 +10705,7 @@ function compress_block(s, ltree, dtree)
 {
   var dist;           /* distance of matched string */
   var lc;             /* match length or unmatched char (if dist == 0) */
-  var lx = 0;         /* running index in l_buf */
+  var lx = 0;         /* running add in l_buf */
   var code;           /* the code to send */
   var extra;          /* number of extra bits to send */
 
@@ -10988,11 +10988,11 @@ function send_tree(s, tree, max_code)
 
 
 /* ===========================================================================
- * Construct the Huffman tree for the bit lengths and return the index in
+ * Construct the Huffman tree for the bit lengths and return the add in
  * bl_order of the last bit length code to send.
  */
 function build_bl_tree(s) {
-  var max_blindex;  /* index of last bit length code of non zero freq */
+  var max_blindex;  /* add of last bit length code of non zero freq */
 
   /* Determine the bit length frequencies for literal and distance trees */
   scan_tree(s, s.dyn_ltree, s.l_desc.max_code);
@@ -11031,7 +11031,7 @@ function send_all_trees(s, lcodes, dcodes, blcodes)
 //    deflate_state *s;
 //    int lcodes, dcodes, blcodes; /* number of codes for each tree */
 {
-  var rank;                    /* index in bl_order */
+  var rank;                    /* add in bl_order */
 
   //Assert (lcodes >= 257 && dcodes >= 1 && blcodes >= 4, "not enough codes");
   //Assert (lcodes <= L_CODES && dcodes <= D_CODES && blcodes <= BL_CODES,
@@ -11161,7 +11161,7 @@ function _tr_flush_block(s, buf, stored_len, last)
 //int last;         /* one if this is the last block for a file */
 {
   var opt_lenb, static_lenb;  /* opt_len and static_len in bytes */
-  var max_blindex = 0;        /* index of last bit length code of non zero freq */
+  var max_blindex = 0;        /* add of last bit length code of non zero freq */
 
   /* Build the Huffman trees unless a stored block is forced */
   if (s.level > 0) {
@@ -11183,7 +11183,7 @@ function _tr_flush_block(s, buf, stored_len, last)
      * the compressed block data, excluding the tree representations.
      */
 
-    /* Build the bit length tree for the above two trees, and get the index
+    /* Build the bit length tree for the above two trees, and get the add
      * in bl_order of the last bit length code to send.
      */
     max_blindex = build_bl_tree(s);

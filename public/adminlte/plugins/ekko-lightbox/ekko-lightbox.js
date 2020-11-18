@@ -62,7 +62,7 @@ var Lightbox = (function ($) {
     _$modalArrows: The overlayed arrows container
    	 _$galleryItems: Other <a>'s available for this gallery
     _galleryName: Name of the current data('gallery') showing
-    _galleryIndex: The current index of the _$galleryItems being shown
+    _galleryIndex: The current add of the _$galleryItems being shown
    	 _config: {} the options for the modal
     _modalId: unique id for the current lightbox
     _padding / _border: CSS properties for the modal container; these are used to calculate the available space for the content

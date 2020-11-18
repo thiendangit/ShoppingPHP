@@ -138,10 +138,65 @@ Route::prefix('admin')->group(function () {
             'uses' => 'SliderController@update'
         ]);
 
-//        Route::get('/delete/{id}', [
-//            'as' => 'product.delete',
-//            'uses' => 'ProductController@delete'
-//        ]);
+        Route::get('/delete/{id}', [
+            'as' => 'slider.delete',
+            'uses' => 'SliderController@delete'
+        ]);
+    });
+
+
+    Route::prefix('setting')->group(function () {
+        Route::get('/', [
+            'as' => 'setting.index',
+            'uses' => 'SettingController@index'
+        ]);
+        Route::get('/create', [
+            'as' => 'setting.create',
+            'uses' => 'SettingController@create'
+        ]);
+        Route::post('/store', [
+            'as' => 'setting.store',
+            'uses' => 'SettingController@store'
+        ]);
+        Route::get('/edit/{id}', [
+            'as' => 'setting.edit',
+            'uses' => 'SettingController@edit'
+        ]);
+        Route::post('/update/{id}', [
+            'as' => 'setting.update',
+            'uses' => 'SettingController@update'
+        ]);
+        Route::get('/delete/{id}', [
+            'as' => 'setting.delete',
+            'uses' => 'SettingController@delete'
+        ]);
+    });
+
+    Route::prefix('user')->group(function () {
+        Route::get('/', [
+            'as' => 'user.index',
+            'uses' => 'AdmindUserController@index'
+        ]);
+        Route::get('/create', [
+            'as' => 'user.create',
+            'uses' => 'AdmindUserController@create'
+        ]);
+        Route::post('/store', [
+            'as' => 'user.store',
+            'uses' => 'AdmindUserController@store'
+        ]);
+        Route::get('/edit/{id}', [
+            'as' => 'user.edit',
+            'uses' => 'AdmindUserController@edit'
+        ]);
+        Route::post('/update/{id}', [
+            'as' => 'user.update',
+            'uses' => 'AdmindUserController@update'
+        ]);
+        Route::get('/delete/{id}', [
+            'as' => 'user.delete',
+            'uses' => 'AdmindUserController@delete'
+        ]);
     });
 });
 

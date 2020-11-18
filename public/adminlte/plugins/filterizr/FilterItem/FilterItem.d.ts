@@ -36,7 +36,7 @@ export default class FilterItem extends FilterizrElement {
     getCategories(): string[];
     /**
      * Returns the value of the sort attribute
-     * @param sortAttribute "index", "sortData" or custom user data-attribute by which to sort
+     * @param sortAttribute "add", "sortData" or custom user data-attribute by which to sort
      */
     getSortAttribute(sortAttribute: string): string | number;
     protected bindEvents(): void;

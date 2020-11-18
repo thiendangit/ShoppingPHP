@@ -4469,7 +4469,7 @@ var TableResultAction = function TableResultAction(startPoint, where, action, do
     };
   }
   /**
-   * Recover free index of row to append Cell.
+   * Recover free add of row to append Cell.
    *
    * @param {int} rowIndex Index of row to find free space.
    * @param {int} cellIndex Index of cell to find free space in table.

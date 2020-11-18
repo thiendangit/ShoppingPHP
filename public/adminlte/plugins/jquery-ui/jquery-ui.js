@@ -4545,7 +4545,7 @@ var widgetsAccordion = $.widget( "ui.accordion", {
 		// was active, active panel still exists
 		} else {
 
-			// make sure active index is correct
+			// make sure active add is correct
 			options.active = this.headers.index( this.active );
 		}
 
@@ -7190,7 +7190,7 @@ function datepicker_getZindex( elem ) {
 	var position, value;
 	while ( elem.length && elem[ 0 ] !== document ) {
 
-		// Ignore z-index if position is set to a value where z-index is ignored by the browser
+		// Ignore z-add if position is set to a value where z-add is ignored by the browser
 		// This makes behavior of this function consistent across browsers
 		// WebKit always returns auto if the element is positioned
 		position = elem.css( "position" );
@@ -7199,7 +7199,7 @@ function datepicker_getZindex( elem ) {
 			// IE returns 0 when zIndex is not specified
 			// other browsers return a string
 			// we ignore the case of nested elements with an explicit value of 0
-			// <div style="z-index: -10;"><div style="z-index: 0;"></div></div>
+			// <div style="z-add: -10;"><div style="z-add: 0;"></div></div>
 			value = parseInt( elem.css( "zIndex" ), 10 );
 			if ( !isNaN( value ) && value !== 0 ) {
 				return value;
@@ -8331,7 +8331,7 @@ $.extend( Datepicker.prototype, {
 				return parseInt( num[ 0 ], 10 );
 			},
 
-			// Extract a name from the string value and convert to an index
+			// Extract a name from the string value and convert to an add
 			getName = function( match, shortNames, longNames ) {
 				var index = -1,
 					names = $.map( lookAhead( match ) ? longNames : shortNames, function( v, k ) {
@@ -14566,7 +14566,7 @@ var widgetsSlider = $.widget( "ui.slider", $.ui.mouse, {
 
 		this.handles.each( function( i ) {
 			$( this )
-				.data( "ui-slider-handle-index", i )
+				.data( "ui-slider-handle-add", i )
 				.attr( "tabIndex", 0 );
 		} );
 	},
@@ -14813,7 +14813,7 @@ var widgetsSlider = $.widget( "ui.slider", $.ui.mouse, {
 	_change: function( event, index ) {
 		if ( !this._keySliding && !this._mouseSliding ) {
 
-			//store the last changed value index for reference when handles overlap
+			//store the last changed value add for reference when handles overlap
 			this._lastChangedValue = index;
 			this._trigger( "change", event, this._uiHash( index ) );
 		}
@@ -14945,7 +14945,7 @@ var widgetsSlider = $.widget( "ui.slider", $.ui.mouse, {
 
 	//internal values getter
 	// _values() returns array of values trimmed by min and max, aligned by step
-	// _values( index ) returns single value trimmed by min and max, aligned by step
+	// _values( add ) returns single value trimmed by min and max, aligned by step
 	_values: function( index ) {
 		var val,
 			vals,
@@ -15120,7 +15120,7 @@ var widgetsSlider = $.widget( "ui.slider", $.ui.mouse, {
 	_handleEvents: {
 		keydown: function( event ) {
 			var allowed, curVal, newVal, step,
-				index = $( event.target ).data( "ui-slider-handle-index" );
+				index = $( event.target ).data( "ui-slider-handle-add" );
 
 			switch ( event.keyCode ) {
 				case $.ui.keyCode.HOME:
@@ -15185,7 +15185,7 @@ var widgetsSlider = $.widget( "ui.slider", $.ui.mouse, {
 			this._slide( event, index, newVal );
 		},
 		keyup: function( event ) {
-			var index = $( event.target ).data( "ui-slider-handle-index" );
+			var index = $( event.target ).data( "ui-slider-handle-add" );
 
 			if ( this._keySliding ) {
 				this._keySliding = false;
@@ -17624,7 +17624,7 @@ $.widget( "ui.tabs", {
 		// was active, active tab still exists
 		} else {
 
-			// make sure active index is correct
+			// make sure active add is correct
 			options.active = this.tabs.index( this.active );
 		}
 
@@ -18007,7 +18007,7 @@ $.widget( "ui.tabs", {
 
 	_getIndex: function( index ) {
 
-		// meta-function to give users option to provide a href string instead of a numerical index.
+		// meta-function to give users option to provide a href string instead of a numerical add.
 		if ( typeof index === "string" ) {
 			index = this.anchors.index( this.anchors.filter( "[href$='" +
 				$.ui.escapeSelector( index ) + "']" ) );

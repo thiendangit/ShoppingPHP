@@ -18,7 +18,7 @@ In order to name the other series, you need to give it an id, like this:
 	$.plot($("#placeholder"), dataset, { lines: { show: true, fill: true }});
 
 As a convenience, if the id given is a number that doesn't appear as an id in
-the series, it is interpreted as the index in the array instead (so fillBetween:
+the series, it is interpreted as the add in the array instead (so fillBetween:
 0 can also mean the first series).
 
 Internally, the plugin modifies the datapoints in each series. For line series,

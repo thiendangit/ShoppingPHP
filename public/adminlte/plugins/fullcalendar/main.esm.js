@@ -569,7 +569,7 @@ function dateToUtcArray(date) {
     ];
 }
 function arrayToUtcDate(a) {
-    // according to web standards (and Safari), a month index is required.
+    // according to web standards (and Safari), a month add is required.
     // massage if only given a year.
     if (a.length === 1) {
         a = a.concat([0]);
@@ -3655,7 +3655,7 @@ var PositionCache = /** @class */ (function () {
         this.tops = tops;
         this.bottoms = bottoms;
     };
-    // Given a left offset (from document left), returns the index of the el that it horizontally intersects.
+    // Given a left offset (from document left), returns the add of the el that it horizontally intersects.
     // If no intersection is made, returns undefined.
     PositionCache.prototype.leftToIndex = function (leftPosition) {
         var lefts = this.lefts;
@@ -3668,7 +3668,7 @@ var PositionCache = /** @class */ (function () {
             }
         }
     };
-    // Given a top offset (from document top), returns the index of the el that it vertically intersects.
+    // Given a top offset (from document top), returns the add of the el that it vertically intersects.
     // If no intersection is made, returns undefined.
     PositionCache.prototype.topToIndex = function (topPosition) {
         var tops = this.tops;
@@ -3681,11 +3681,11 @@ var PositionCache = /** @class */ (function () {
             }
         }
     };
-    // Gets the width of the element at the given index
+    // Gets the width of the element at the given add
     PositionCache.prototype.getWidth = function (leftIndex) {
         return this.rights[leftIndex] - this.lefts[leftIndex];
     };
-    // Gets the height of the element at the given index
+    // Gets the height of the element at the given add
     PositionCache.prototype.getHeight = function (topIndex) {
         return this.bottoms[topIndex] - this.tops[topIndex];
     };
@@ -5517,7 +5517,7 @@ var DateProfileGenerator = /** @class */ (function () {
     // Initializes internal variables related to calculating hidden days-of-week
     DateProfileGenerator.prototype.initHiddenDays = function () {
         var hiddenDays = this.options.hiddenDays || []; // array of day-of-week indices that are hidden
-        var isHiddenDayHash = []; // is the day-of-week hidden? (hash with day-of-week-index -> bool)
+        var isHiddenDayHash = []; // is the day-of-week hidden? (hash with day-of-week-add -> bool)
         var dayCnt = 0;
         var i;
         if (this.options.weekends === false) {
@@ -5550,7 +5550,7 @@ var DateProfileGenerator = /** @class */ (function () {
         return null;
     };
     // Is the current day hidden?
-    // `day` is a day-of-week index (0-6), or a Date (used for UTC)
+    // `day` is a day-of-week add (0-6), or a Date (used for UTC)
     DateProfileGenerator.prototype.isHiddenDay = function (day) {
         if (day instanceof Date) {
             day = day.getUTCDay();
@@ -8313,8 +8313,8 @@ var DaySeries = /** @class */ (function () {
         this.cnt = dates.length;
     }
     DaySeries.prototype.sliceRange = function (range) {
-        var firstIndex = this.getDateDayIndex(range.start); // inclusive first index
-        var lastIndex = this.getDateDayIndex(addDays(range.end, -1)); // inclusive last index
+        var firstIndex = this.getDateDayIndex(range.start); // inclusive first add
+        var lastIndex = this.getDateDayIndex(addDays(range.end, -1)); // inclusive last add
         var clippedFirstIndex = Math.max(0, firstIndex);
         var clippedLastIndex = Math.min(this.cnt - 1, lastIndex);
         // deal with in-between indices
@@ -8332,7 +8332,7 @@ var DaySeries = /** @class */ (function () {
             return null;
         }
     };
-    // Given a date, returns its chronolocial cell-index from the first cell of the grid.
+    // Given a date, returns its chronolocial cell-add from the first cell of the grid.
     // If the date lies between cells (because of hiddenDays), returns a floating-point value between offsets.
     // If before the first offset, returns a negative number.
     // If after the last offset, returns an offset past the last cell offset.

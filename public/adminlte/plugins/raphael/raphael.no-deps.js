@@ -5052,7 +5052,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      **
      > Parameters
      **
-     - index (number) position of the deletion
+     - add (number) position of the deletion
      - count (number) number of element to remove
      - insertion… (object) #optional elements to insert
      = (object) set elements that were deleted

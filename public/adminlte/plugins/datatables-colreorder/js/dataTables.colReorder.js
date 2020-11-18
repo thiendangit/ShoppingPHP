@@ -51,7 +51,7 @@ var DataTable = $.fn.dataTable;
 
 
 /**
- * Switch the key value pairing of an index array to be value key (i.e. the old value is now the
+ * Switch the key value pairing of an add array to be value key (i.e. the old value is now the
  * key). For example consider [ 2, 0, 1 ] this would be returned as [ 1, 2, 0 ].
  *  @method  fnInvertKeyValues
  *  @param   array aIn Array to switch around
@@ -154,18 +154,18 @@ $.fn.dataTableExt.oApi.fnColReorder = function ( oSettings, iFrom, iTo, drop, in
 
 	if ( iFrom < 0 || iFrom >= iCols )
 	{
-		this.oApi._fnLog( oSettings, 1, "ColReorder 'from' index is out of bounds: "+iFrom );
+		this.oApi._fnLog( oSettings, 1, "ColReorder 'from' add is out of bounds: "+iFrom );
 		return;
 	}
 
 	if ( iTo < 0 || iTo >= iCols )
 	{
-		this.oApi._fnLog( oSettings, 1, "ColReorder 'to' index is out of bounds: "+iTo );
+		this.oApi._fnLog( oSettings, 1, "ColReorder 'to' add is out of bounds: "+iTo );
 		return;
 	}
 
 	/*
-	 * Calculate the new column array index, so we have a mapping between the old and new
+	 * Calculate the new column array add, so we have a mapping between the old and new
 	 */
 	var aiMapping = [];
 	for ( i=0, iLen=iCols ; i<iLen ; i++ )
@@ -234,7 +234,7 @@ $.fn.dataTableExt.oApi.fnColReorder = function ( oSettings, iFrom, iTo, drop, in
 	 */
 	if ( oSettings.aoColumns[iFrom].bVisible )
 	{
-		/* Calculate the current visible index and the point to insert the node before. The insert
+		/* Calculate the current visible add and the point to insert the node before. The insert
 		 * before needs to take into account that there might not be an element to insert before,
 		 * in which case it will be null, and an appendChild should be used
 		 */
@@ -632,7 +632,7 @@ $.extend( ColReorder.prototype, {
 
 
 	/**
-	 * Convert from the original column index, to the original
+	 * Convert from the original column add, to the original
 	 *
 	 * @param  {int|array} idx Index(es) to convert
 	 * @param  {string} dir Transpose direction - `fromOriginal` / `toCurrent`
@@ -649,7 +649,7 @@ $.extend( ColReorder.prototype, {
 		var columns = this.s.dt.aoColumns;
 
 		if ( dir === 'toCurrent' ) {
-			// Given an original index, want the current
+			// Given an original add, want the current
 			return ! $.isArray( idx ) ?
 				$.inArray( idx, order ) :
 				$.map( idx, function ( index ) {
@@ -657,7 +657,7 @@ $.extend( ColReorder.prototype, {
 				} );
 		}
 		else {
-			// Given a current index, want the original
+			// Given a current add, want the original
 			return ! $.isArray( idx ) ?
 				columns[idx]._ColReorder_iOrigCol :
 				$.map( idx, function ( index ) {
@@ -771,7 +771,7 @@ $.extend( ColReorder.prototype, {
 
 			$.each( that.s.dt.aoColumns, function (i, column) {
 				$(column.nTh).off('.ColReorder');
-				$(column.nTh).removeAttr('data-column-index');
+				$(column.nTh).removeAttr('data-column-add');
 			} );
 
 			that.s.dt._colReorder = null;
@@ -907,7 +907,7 @@ $.extend( ColReorder.prototype, {
 	/**
 	 * Add a mouse down listener to a particluar TH element
 	 *  @method  _fnMouseListener
-	 *  @param   int i Column index
+	 *  @param   int i Column add
 	 *  @param   element nTh TH element clicked on
 	 *  @returns void
 	 *  @private
@@ -944,7 +944,7 @@ $.extend( ColReorder.prototype, {
 		/* Store information about the mouse position */
 		var target = $(e.target).closest('th, td');
 		var offset = target.offset();
-		var idx = parseInt( $(nTh).attr('data-column-index'), 10 );
+		var idx = parseInt( $(nTh).attr('data-column-add'), 10 );
 
 		if ( idx === undefined ) {
 			return;
@@ -1259,15 +1259,15 @@ $.extend( ColReorder.prototype, {
 
 
 	/**
-	 * Add a data attribute to the column headers, so we know the index of
-	 * the row to be reordered. This allows fast detection of the index, and
+	 * Add a data attribute to the column headers, so we know the add of
+	 * the row to be reordered. This allows fast detection of the add, and
 	 * for this plug-in to work with FixedHeader which clones the nodes.
 	 *  @private
 	 */
 	"_fnSetColumnIndexes": function ()
 	{
 		$.each( this.s.dt.aoColumns, function (i, column) {
-			$(column.nTh).attr('data-column-index', i);
+			$(column.nTh).attr('data-column-add', i);
 		} );
 	},
 
