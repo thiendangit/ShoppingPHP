@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Policies\SliderPolicy;
+use App\Services\PermissionGateAndPolicyAccess;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -14,6 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        'App\Models\Slider' => SliderPolicy::class,
     ];
 
     /**
@@ -24,12 +27,7 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-        Gate::define(config('permission.access.list_category'), function ($user){
-            return $user -> checkUserPermission(config('permission.access.list_category'));
-        });
-
-        Gate::define(config('permission.access.list_menu'), function ($user){
-            return $user -> checkUserPermission(config('permission.access.list_menu'));
-        });
+        $permissionGateAndPolicy = new PermissionGateAndPolicyAccess();
+        $permissionGateAndPolicy -> setGateAndPolicyAccess();
     }
 }
