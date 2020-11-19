@@ -15,7 +15,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="{{route('user.create')}}" class="btn btn-success m-2 float-right">
+                        <a href="{{route('role.create')}}" class="btn btn-success m-2 float-right">
                             Add New
                         </a>
                     </div>
@@ -24,8 +24,8 @@
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Tên</th>
-                                <th scope="col">Email</th>
+                                <th scope="col">Tên vai trò</th>
+                                <th scope="col">Mô tả vai trò</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
@@ -33,16 +33,16 @@
                             <div class="container">
 
                             </div>
-                            @foreach($users as $user)
+                            @foreach($roles as $role)
                                 <tr>
-                                    <th scope="row">{{$user->id}}</th>
-                                    <td>{{$user->name}}</td>
-                                    <td>{{$user->email}}</td>
+                                    <th scope="row">{{$role->id}}</th>
+                                    <td>{{$role->name}}</td>
+                                    <td>{{$role->display_name}}</td>
                                     <td>
-                                        <a href="{{route('user.edit', ['id' => $user->id])}}"
+                                        <a href="{{route('role.edit', ['id' => $role->id])}}"
                                            class="btn btn-default">Edit</a>
                                         <a class="btn btn-danger action_delete"
-                                           data-url="{{route('user.delete',['id' => $user->id])}}">Delete</a>
+                                           data-url="{{route('role.delete',['id' => $role->id])}}">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -50,7 +50,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-md-12">{{$users->links()}}</div>
+                <div class="col-md-12">{{$roles->links()}}</div>
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
