@@ -1,12 +1,24 @@
 # Learning Shopping App with Laravel
+
 ![img](https://laravel.com/img/logotype.min.svg)
-![img](https://techvccloud.mediacdn.vn/zoom/600_315/2020/9/17/mysql-1-1600340047538868003500-crop-160034079526453914971.png)
-CMS : 
+
+![img](https://w7.pngwing.com/pngs/354/683/png-transparent-logo-mysql-database-phpmyadmin-oracle-sql-logo-blue-text-logo-thumbnail.png)
+
+# CMS :
+
 ![img](https://i.imgur.com/qN1wNwc.png)
-SHOPPING PAGE ![Imgur](https://i.imgur.com/7Jnd0A3.png)
+
+# SHOPPING PAGE 
+
+![Imgur](https://i.imgur.com/7Jnd0A3.png)
+
+
 ![Imgur](https://i.imgur.com/8LW2JCX.png)
+
+
 ![Imgur](https://i.imgur.com/erv5CZT.png)
-## [Install]
+
+## Install
 1. clone repository
 ```
   git clone https://github.com/thiendangit/ShoppingPHP.git
