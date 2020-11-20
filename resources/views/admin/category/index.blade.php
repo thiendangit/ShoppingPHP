@@ -5,8 +5,8 @@
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-       @include('partials.content-header',['name' => 'category','key' => 'List'])
-        <!-- /.content-header -->
+    @include('partials.content-header',['name' => 'category','key' => 'List'])
+    <!-- /.content-header -->
 
         <!-- Main content -->
         <div class="content">
@@ -31,14 +31,16 @@
 
                             </div>
                             @foreach($categories as $category)
-                            <tr>
-                                <th scope="row">{{$category->id}}</th>
-                                <td>{{$category->name}}</td>
-                                <td>
-                                    <a href="{{route('categories.edit', ['id' => $category->id])}}" class="btn btn-default">Edit</a>
-                                    <a href="{{route('categories.delete', ['id' => $category->id])}}" class="btn btn-danger">Delete</a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <th scope="row">{{$category->id}}</th>
+                                    <td>{{$category->name}}</td>
+                                    <td>
+                                        <a href="{{route('categories.edit', ['id' => $category->id])}}"
+                                           class="btn btn-default">Edit</a>
+                                        <a href="{{route('categories.delete', ['id' => $category->id])}}"
+                                           class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
                             @endforeach
                             </tbody>
                         </table>

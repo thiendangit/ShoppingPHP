@@ -14,8 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 //SHOP PAGE
-Route::get('/', 'Shop\ShopController@index');
-Route::post('/', 'HomeController@postLoginAdmin');
+Route::get('/', [
+    'as' => 'home.index',
+    'uses' => 'Shop\ShopController@index',
+]);
+Route::get('/category/{slug}/{id}', [
+    'as' => 'category.product',
+    'uses' => 'CategoryController@viewCategoryDetailByID'
+]);
 
 
 //SHOP CMS

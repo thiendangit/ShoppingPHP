@@ -21,7 +21,7 @@
                             </div>
                             <div class="input-group mb-3">
                                 <select class="custom-select" id="inputGroupSelect02" name="parent_id">
-                                    <option selected>Chọn danh mục cha</option>
+                                    <option selected value="0">Chọn danh mục cha</option>
                                     {!! $htmlOption !!}
                                 </select>
                                 <div class="input-group-append">

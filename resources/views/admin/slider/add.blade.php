@@ -13,7 +13,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
-                        <form action="{{route('slider.store')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('slider.store')}}" method="post" enctype="multipart/form-data"
+                              accept-charset="UTF-8">
                             @csrf
                             <div class="form-group">
                                 <label>Tên slider</label>
@@ -21,11 +22,8 @@
                             </div>
                             <div class="form-group">
                                 <label>Mô tả</label>
-                                <textarea
-                                    class="form-control"
-                                    name="description"
-                                    rows="3"
-                                    placeholder="Nhập tên mô tả"> {{old('description')}}</textarea>
+                                <textarea class="form-control" name="description" rows="3" type="text"
+                                          placeholder="Nhập tên mô tả">{{old('description')}}</textarea>
                             </div>
                             <div class="form-group">
                                 <label>Hình ảnh</label>

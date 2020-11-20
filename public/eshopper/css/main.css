@@ -835,6 +835,19 @@ h2.title {
     margin-bottom: 30px;
 }
 
+.feature_image_400_300{
+     width: 400px;
+     height: 300px;
+     object-fit: contain;
+ }
+
+.feature_image_300_200{
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+}
+
+
 .single-products {
     position: relative;
 }
